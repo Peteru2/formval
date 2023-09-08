@@ -68,8 +68,10 @@ const LandingPage = () => {
         "p-1",
         "mr-3",
         "mt-2",
-        "w-6",
-        "h-6",
+        "md:w-6",
+        "w-10",
+        "md:h-6",
+        "h-10",
         "text-center",
         "text-white", 
         "text-xs", 
@@ -79,18 +81,41 @@ const LandingPage = () => {
         "border-white",
         "flex",
         "align-center",
-        "justify-center"
+        "justify-center",
+        "items-center"
+        
+    ]
+    const DaStyles1 = [
+        "p-1",
+        "mr-3",
+        "mt-2",
+        "md:w-6",
+        "w-10",
+        "md:h-6",
+        "h-10",
+        "text-center",
+        "text-black", 
+        "text-xs", 
+        "rounded-full",
+        "cursor-pointer",
+        "border-2",
+        "border-white",
+        "flex",
+        "align-center",
+        "justify-center",
+        "items-center",
+        "bg-blue-50"
         
     ]
     return ( 
             <>
-                    <section className=" Landing p-2 my-auto align-center bg-white rounded-md">
-                            <div className="grid grid-cols-3">
-                                    <div className="LandingBg col-span-1 p-5 ">
-                                        <div>
+                    <section className=" Landing  my-auto align-center bg-white rounded-md">
+                            <div className="grid md:grid-cols-3 md:p-2 grid-cols-1 ">
+                                    <div className="LandingBg col-span-1 p-5 md:block flex md:justify-left justify-center ">
+                                        <div className="md:block flex md:ml-0 md:mt-0 mt-4  justify-center ">
                                             <div className=" cursor-pointer flex" >
-                                                <span className={DaStyles2.join(" ")}>1</span>
-                                            <div>
+                                                <span className={ step === 1 ? `${DaStyles1.join(" ")} `:`${DaStyles2.join(" ")} ` }>1</span>
+                                            <div className="md:block hidden">
                                             <p className="text-gray-300 text-sm ">STEP 1</p>
                                             <p className="text-xs text-white font-bold">YOUR INFO</p>
                                             </div>
@@ -98,28 +123,28 @@ const LandingPage = () => {
                                           
                                         
                                             
-                                            <div className=" mt-4 cursor-pointer flex" >
-                                                <span className={DaStyles2.join(" ")}>2</span>
+                                            <div className=" md:mt-4 cursor-pointer flex" >
+                                                <span className={ step === 2 ? `${DaStyles1.join(" ")} `:`${DaStyles2.join(" ")} ` }>2</span>
                  
                  
-                                            <div>
+                                            <div className="md:block hidden">
                                             <p className="text-gray-300 text-sm ">STEP 2</p>
                                             <p className="text-xs text-white font-bold">SELECT PLAN</p>
                                             </div>
                                             </div>
                                           
                                             
-                                            <div className=" mt-4 cursor-pointer flex" >
-                                                <span className={DaStyles2.join(" ")}>3</span>
-                                            <div>
+                                            <div className=" md:mt-4 cursor-pointer flex" >
+                                                <span className={ step === 3 ? `${DaStyles1.join(" ")} `:`${DaStyles2.join(" ")} ` }>3</span>
+                                            <div className="md:block hidden">
                                             <p className="text-gray-300 text-sm ">STEP 3</p>
                                             <p className="text-xs text-white font-bold">ADD ONS</p>
                                             </div>
                                             </div>
 
-                                            <div className=" mt-4 cursor-pointer flex" >
-                                                <span className={DaStyles2.join(" ")}>4</span>
-                                            <div>
+                                            <div className=" md:mt-4 cursor-pointer flex" >
+                                                <span className={ step === 4 ? `${DaStyles1.join(" ")} `:`${DaStyles2.join(" ")} ` }>4</span>
+                                            <div className="md:block hidden">
                                             <p className="text-gray-300 text-sm ">STEP 4</p>
                                             <p className="text-xs text-white font-bold">SUMMARY</p>
                                             </div>
@@ -129,7 +154,7 @@ const LandingPage = () => {
                                             </div>
 
                                             {step === 1 && (
-                                            < div className="flex justify-center align-center w-full col-span-2" >
+                                            < div className="col-span-2 pageBody " >
                                                 <div>
                                                 <h2 className="text-2xl mt-2 font-bold text-blue-900">Personal Info</h2>
                                                 <p className="text-sm text-gray-300">Please provide name, email address, and phone number</p>
@@ -138,8 +163,10 @@ const LandingPage = () => {
                                                 <label className="my-1 text-sm label flex"><span>Name</span> <span className="ml-auto text-red-200"></span></label>
                                                     <div className="flex items-center border rounded-md px-3 mt-1 py-2">
                                                     <input type="text" 
-                                                           className="w-full outline-none" 
-                                                           placeholder="Name" 
+                                                           className="w-full outline-none text-blue-900" 
+                                                           placeholder="e.g, Stephen King" 
+                                                          
+
                                                            autoFocus 
                                                         //    value={formData.name}
                                                         //    onChange={handleInputChange}
@@ -151,8 +178,10 @@ const LandingPage = () => {
                                                 <label className="my-1 text-sm label flex"><span>Email Address</span> <span className="ml-auto text-red-200"></span></label>
                                                     <div className="flex items-center border rounded-md px-3 mt-1 py-2">
                                                     <input type="Email" 
-                                                           className="w-full outline-none" 
-                                                           placeholder="Email" 
+                                                           className="w-full outline-none text-blue-900" 
+                                                           placeholder="e.g, stephenking@lorem.com" 
+                                                         
+
                                                         //    value={formData.email} 
                                                         //    onChange={handleInputChange}
                                                            />
@@ -163,18 +192,20 @@ const LandingPage = () => {
                                                 <label className="my-1 text-sm label flex"><span>Phone Number</span> <span className="ml-auto text-red-200"></span></label>
                                                     <div className="flex items-center border rounded-md px-3 mt-1 py-2">
                                                     <input type="text" 
-                                                           className="w-full outline-none" 
-                                                           placeholder="Phone Number" 
+                                                           className="w-full outline-none text-blue-900" 
+                                                           placeholder="e.g, +1 234 567 890"
+                                                         
                                                         //    value={formData.phoneNumber}
                                                         //    onChange={handleInputChange}
                                                            />
                                                     </div>
                                                 </div>
 
-                                             
-                                                        <button onClick={handleNext} className="ml-auto flex justify-center mt-32 rounded-md bg-blue-800 px-4 py-2 w-24 text-center text-white">
-                                                            Next
+                                                        <div className=" actionButton">
+                                                        <button onClick={handleNext} className="ml-auto flex justify-center mt-32 rounded-md bg-blue-800 px-4 py-2 w-32 text-center text-white " >
+                                                            Next Step
                                                         </button>
+                                                        </div>
                                                 
                                                 </form>
                                                 </div>
@@ -182,7 +213,7 @@ const LandingPage = () => {
                                             )}
                                             
                                   {step === 2 && (       
-                                   <div  className="flex justify-center align-center w-full col-span-2 mt-4">
+                                   <div  className="col-span-2 pageBody">
                                     <div>       
                                                                          
                                           <h2 className="text-2xl mt-2 font-bold text-blue-900">Select your plan</h2>
@@ -231,8 +262,8 @@ const LandingPage = () => {
                                                         </button>
                                                     </div>
                                                     
-                                                        <button onClick={handleNext} className="ml-auto rounded-md bg-blue-900 px-4 py-2 w-24 text-center text-white ">
-                                                                Next
+                                                        <button onClick={handleNext} className="ml-auto flex rounded-md bg-blue-900 px-4 py-2 w-32 text-center text-white ">
+                                                                Next Step
                                                         </button>
                                                    
                                                 </div>
@@ -240,28 +271,28 @@ const LandingPage = () => {
                                    </div>
                                     )}
 
-                                { step === 3   && (<div  className="flex justify-center align-center w-full col-span-2 mt-4">
+                                { step === 3   && (<div  className="col-span-2 pageBody">
                                          <div>                                                  
                                                 <h2 className="text-2xl mt-2 font-bold text-blue-900">Pick add-ons</h2>
                                                 <p className="text-xs text-gray-300">Add-ons helps enhance your gaming experience</p>
 
-                                                <div className="flex border-2 border-blue-900 p-4 rounded-md mt-8 w-full">
+                                                <div className="flex border-2 border-blue-900 p-4 rounded-md mt-8 ">
                                                     <input type="checkbox" />
                                                     <div className="ml-3">
-                                                        <p className="text-blue-900 text-sm" >Online Service</p>
-                                                        <p className="text-gray-300 text-xs">Access to multi-player game</p>
+                                                        <p className="text-blue-900 text-sm " >Online Service</p>
+                                                        <p className="text-gray-300 text-xs ">Access to multi-player game</p>
                                                     </div>
-                                                    <p className="ml-32 text-sm text-blue-700 mt-1">
+                                                    <p className=" md:ml-32 ml-auto text-sm text-blue-700 mt-1">
                                                         +$1/mo
                                                     </p>
                                                 </div>
-                                                <div className="flex border-2 border-blue-900 p-4 rounded-md mt-8 w-full">
+                                                <div className="flex border-2 border-blue-900 p-4 rounded-md mt-8 ">
                                                     <input type="checkbox" />
                                                     <div className="ml-3">
                                                         <p className="text-blue-900 text-sm" >Large Storage</p>
                                                         <p className="text-gray-300 text-xs">Extra 1TB of cloud save</p>
                                                     </div>
-                                                    <p className="ml-32 text-sm text-blue-700 mt-1">
+                                                    <p className="md:ml-32 ml-auto text-sm text-blue-700 mt-1">
                                                         +$2/mo
                                                     </p>
                                                 </div>
@@ -271,7 +302,7 @@ const LandingPage = () => {
                                                         <p className="text-blue-900 text-sm" >Customizble Profile</p>
                                                         <p className="text-gray-300 text-xs">Custome theme on your profile</p>
                                                     </div>
-                                                    <p className="ml-32 text-sm text-blue-700 mt-1">
+                                                    <p className="md:ml-32 ml-auto  text-sm text-blue-700 mt-1">
                                                         +$2/mo
                                                     </p>
                                                 </div>
@@ -282,8 +313,8 @@ const LandingPage = () => {
                                                         </button>
                                                     </div>
                                                     
-                                                        <button onClick={handleNext} className="ml-auto rounded-md bg-blue-900 px-4 py-2 w-24 text-center text-white ">
-                                                                Next
+                                                        <button onClick={handleNext} className="ml-auto rounded-md bg-blue-900 px-4 py-2 w-32 text-center text-white ">
+                                                                Next Step
                                                         </button>
                                                    
                                                 </div>
@@ -292,7 +323,7 @@ const LandingPage = () => {
                                                 </div>
                                             )}
 
-                                               {step === 4 && ( <div  className="flex justify-center align-center w-full col-span-2 mt-4 ">
+                                               {step === 4 && ( <div  className="col-span-2 pageBody ">
                                          <div>                                                  
                                                 <h2 className="text-2xl mt-2 font-bold text-blue-900">Finishing Up</h2>
                                                 <p className="text-xs text-gray-300">Double-check everything looks OK before confirming</p>
