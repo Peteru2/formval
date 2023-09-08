@@ -4,8 +4,66 @@ import Arcade from "./images/icon-arcade.svg"
 import Advanced from "./images/icon-advanced.svg"
 import Pro from "./images/icon-pro.svg"
 import Check from "./images/icon-checkmark.svg"
-const LandingPage = () => {
+import { useState } from "react"
 
+
+const LandingPage = () => {
+    const [step, setStep] = useState(1); // Initialize step state to 1
+    
+//     const [formData, setFormData] = useState({
+//     name: '',
+//     email: '',
+//     phoneNumber: '',
+//   });
+
+//   const [errors, setErrors] = useState({
+//     name: '',
+//     email: '',
+//     phoneNumber: '',
+//   });
+
+//   const handleInputChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData({ ...formData, [name]: value });
+//   };
+    const handleNext = (e) => {
+        e.preventDefault();
+        if (step < 4) {
+            setStep(step + 1); // Move to the next step
+        }
+    //     const newErrors = {};
+    // if (formData.name.trim() === '') {
+    //   newErrors.name = 'Name is required';
+    // }
+    // if (formData.email.trim() === '') {
+    //   newErrors.email = 'Email is required';
+    // }
+    // if (formData.phoneNumber.trim() === '') {
+    //   newErrors.phoneNumber = 'Phone Number is required';
+    // }
+
+    // if (Object.keys(newErrors).length === 0) {
+      // No errors, proceed to the next step or action
+      // Add your logic here for what should happen when all fields are valid
+      // For now, you can just console.log the form data
+    //   console.log(formData);
+     
+    // } else {
+    //   // There are errors, update the errors state
+    //   setErrors(newErrors);
+    // }
+
+    if (step < 2) {
+        setStep(step + 1); // Move to the next step
+    }
+            
+        }
+  
+    const handleBack = () => {
+      if (step > 1) {
+        setStep(step - 1); // Move back to the previous step
+      }
+    };
     const DaStyles2 = [
         "p-1",
         "mr-3",
@@ -42,6 +100,8 @@ const LandingPage = () => {
                                             
                                             <div className=" mt-4 cursor-pointer flex" >
                                                 <span className={DaStyles2.join(" ")}>2</span>
+                 
+                 
                                             <div>
                                             <p className="text-gray-300 text-sm ">STEP 2</p>
                                             <p className="text-xs text-white font-bold">SELECT PLAN</p>
@@ -68,42 +128,63 @@ const LandingPage = () => {
                                             </div>
                                             </div>
 
-                                            < div className="flex justify-center align-center w-full col-span-2 hidden" >
+                                            {step === 1 && (
+                                            < div className="flex justify-center align-center w-full col-span-2" >
                                                 <div>
                                                 <h2 className="text-2xl mt-2 font-bold text-blue-900">Personal Info</h2>
                                                 <p className="text-sm text-gray-300">Please provide name, email address, and phone number</p>
-
+                                            <form>
                                                 <div className="mb-3 mt-6">  
-                                                <label className="my-5 text-sm label">Name</label>
+                                                <label className="my-1 text-sm label flex"><span>Name</span> <span className="ml-auto text-red-200"></span></label>
                                                     <div className="flex items-center border rounded-md px-3 mt-1 py-2">
-                                                    <input type="text" className="w-full outline-none" placeholder="Name" autoFocus/>
+                                                    <input type="text" 
+                                                           className="w-full outline-none" 
+                                                           placeholder="Name" 
+                                                           autoFocus 
+                                                        //    value={formData.name}
+                                                        //    onChange={handleInputChange}
+                                                           />
                                                     </div>
                                                 </div>
 
                                                 <div className="mb-3 mt-6">  
-                                                <label className="my-5 text-sm label">Email Address</label>
+                                                <label className="my-1 text-sm label flex"><span>Email Address</span> <span className="ml-auto text-red-200"></span></label>
                                                     <div className="flex items-center border rounded-md px-3 mt-1 py-2">
-                                                    <input type="Email" className="w-full outline-none" placeholder="Email" />
+                                                    <input type="Email" 
+                                                           className="w-full outline-none" 
+                                                           placeholder="Email" 
+                                                        //    value={formData.email} 
+                                                        //    onChange={handleInputChange}
+                                                           />
                                                     </div>
                                                 </div>
 
                                                 <div className="mb-3 mt-6">  
-                                                <label className="my-1 text-sm label flex"><span>Phone Number</span> <span className="ml-auto text-red-200">This field cannot be empty</span></label>
+                                                <label className="my-1 text-sm label flex"><span>Phone Number</span> <span className="ml-auto text-red-200"></span></label>
                                                     <div className="flex items-center border rounded-md px-3 mt-1 py-2">
-                                                    <input type="Email" className="w-full outline-none" placeholder="Phone Number" />
+                                                    <input type="text" 
+                                                           className="w-full outline-none" 
+                                                           placeholder="Phone Number" 
+                                                        //    value={formData.phoneNumber}
+                                                        //    onChange={handleInputChange}
+                                                           />
                                                     </div>
                                                 </div>
 
-                                                <div className="ml-auto rounded-md bg-blue-800 px-4 py-2 w-24 text-center text-white">
-                                                        <button>
+                                             
+                                                        <button onClick={handleNext} className="ml-auto flex justify-center rounded-md bg-blue-800 px-4 py-2 w-24 text-center text-white">
                                                             Next
                                                         </button>
-                                                </div>
+                                                
+                                                </form>
                                                 </div>
                                             </div>
-                                   
-                                   <div  className="flex justify-center align-center w-full col-span-2 mt-4 hidden">
-                                    <div>                                                  
+                                            )}
+                                            
+                                  {step === 2 && (       
+                                   <div  className="flex justify-center align-center w-full col-span-2 mt-4">
+                                    <div>       
+                                                                         
                                           <h2 className="text-2xl mt-2 font-bold text-blue-900">Select your plan</h2>
                                                 <p className="text-sm text-gray-300">You have the option of monthly or yearly billing</p>
 
@@ -145,22 +226,21 @@ const LandingPage = () => {
                                                 </div>
                                                 <div className="flex mt-32" >
                                                     <div className=" text-gray-400 mt-1 hover:text-blue-900">
-                                                        <button>
+                                                        <button onClick={handleBack}>
                                                             Go Back
                                                         </button>
                                                     </div>
-                                                    <div className="ml-auto rounded-md bg-blue-900 px-4 py-2 w-24 text-center text-white ">
-                                                        <button>
+                                                    
+                                                        <button onClick={handleNext} className="ml-auto rounded-md bg-blue-900 px-4 py-2 w-24 text-center text-white ">
                                                                 Next
                                                         </button>
-                                                    </div>
+                                                   
                                                 </div>
                                                 </div>
                                    </div>
+                                    )}
 
-
-
-                                   <div  className="flex justify-center align-center w-full col-span-2 mt-4 hidden">
+                                { step === 3   && (<div  className="flex justify-center align-center w-full col-span-2 mt-4">
                                          <div>                                                  
                                                 <h2 className="text-2xl mt-2 font-bold text-blue-900">Pick add-ons</h2>
                                                 <p className="text-xs text-gray-300">Add-ons helps enhance your gaming experience</p>
@@ -195,11 +275,24 @@ const LandingPage = () => {
                                                         +$2/mo
                                                     </p>
                                                 </div>
-
+                                                <div className="flex mt-32" >
+                                                    <div className=" text-gray-400 mt-1 hover:text-blue-900">
+                                                        <button onClick={handleBack}>
+                                                            Go Back
+                                                        </button>
+                                                    </div>
+                                                    
+                                                        <button onClick={handleNext} className="ml-auto rounded-md bg-blue-900 px-4 py-2 w-24 text-center text-white ">
+                                                                Next
+                                                        </button>
+                                                   
                                                 </div>
                                                 </div>
+                                               
+                                                </div>
+                                            )}
 
-                                                <div  className="flex justify-center align-center w-full col-span-2 mt-4 ">
+                                               {step === 4 && ( <div  className="flex justify-center align-center w-full col-span-2 mt-4 ">
                                          <div>                                                  
                                                 <h2 className="text-2xl mt-2 font-bold text-blue-900">Finishing Up</h2>
                                                 <p className="text-xs text-gray-300">Double-check everything looks OK before confirming</p>
@@ -228,10 +321,24 @@ const LandingPage = () => {
                                                         <p className="text-gray-400 text-sm">Total(per month)</p>
                                                         <p className="text-blue-900 ml-auto font-bold">+$12/mo</p>
                                                     </div>
+                                                    <div className="flex mt-32" >
+                                                    <div className=" text-gray-400 mt-1 hover:text-blue-900">
+                                                        <button onClick={handleBack}>
+                                                            Go Back
+                                                        </button>
+                                                    </div>
+                                                    
+                                                        <button  className="ml-auto rounded-md bg-blue-700 px-4 py-2 w-24 text-center text-white ">
+                                                                Submit
+                                                        </button>
+                                                   
                                                 </div>
                                                 </div>
-                                                
+                                              
+                                                </div>
+                                              )}  
                             </div>
+                           
                     </section>
             </>
      );
