@@ -172,7 +172,7 @@ const LandingPage = () => {
                                                 </div>
 
                                              
-                                                        <button onClick={handleNext} className="ml-auto flex justify-center rounded-md bg-blue-800 px-4 py-2 w-24 text-center text-white">
+                                                        <button onClick={handleNext} className="ml-auto flex justify-center mt-32 rounded-md bg-blue-800 px-4 py-2 w-24 text-center text-white">
                                                             Next
                                                         </button>
                                                 
