@@ -1,7 +1,13 @@
+body{
+    font-family:  Ubuntu,  sans-serif
+}
 .Landing{
     margin: 100px 350px;
+    border-radius: 10px;
+    
 }
 .LandingBg{
     background: url("./images/bg-sidebar-desktop.svg");
     height: cover;
+    border-radius: 10px;
 }
