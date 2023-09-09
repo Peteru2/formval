@@ -70,7 +70,7 @@ body{
         position: relative;
     } */
     .actionButton1{
-        position:absolute;
+        position:fixed;
        display: flex;
        justify-content: space-between;
         background: white;

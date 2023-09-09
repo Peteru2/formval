@@ -9,7 +9,11 @@ import { useState } from "react"
 
 const LandingPage = () => {
     const [step, setStep] = useState(1); 
+    const [Sub, setSub] = useState(true)
     
+    const handleSub = ()=>{
+        setSub(!Sub)
+    }
 
     const [formData, setFormData] = useState({
     name: '',
@@ -18,46 +22,54 @@ const LandingPage = () => {
   });
 
   const [errors, setErrors] = useState({
-    name: '',
+    name: '', 
     email: '',
     phoneNumber: '',
   });
 
   const handleInputChange = (e) => {
+    // e.preventDefault();
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    console.log(formData);
   };
     const handleNext = (e) => {
         e.preventDefault();
         
-        const newErrors = {};
-    if (formData.name.trim() === '') {
-      newErrors.name = 'Name is required';
-    }
-    if (formData.email.trim() === '') {
-      newErrors.email = 'Email is required';
-    }
-    if (formData.phoneNumber.trim() === '') {
-      newErrors.phoneNumber = 'Phone Number is required';
-    }
+                const newErrors = {};
+            if (formData.name.trim() === '') {
+            newErrors.name = 'Name is required';
+            }
+            if (formData.email.trim() === '') {
+            newErrors.email = 'Email is required';
+            }
+            if (formData.phoneNumber.trim() === '') {
+            newErrors.phoneNumber = 'Phone Number is required';
+            }
 
-    if (Object.keys(newErrors).length === 0) {
-        if (step < 4) {
-            setStep(step + 1); // Move to the next step
-        }
-      console.log(formData);
-     
-    } else {
-      setErrors(newErrors);
-    }
+            if (Object.keys(newErrors).length === 0) {
+                newErrors.phoneNumber=''
+                newErrors.email=''
+                newErrors.name =''
+
+                    if (step < 4) {
+                        setStep(step + 1); // Move to the next step
+                    }
+                console.log(formData);
             
+            } else {
+            setErrors(newErrors);
+            }
+        
         }
+  
   
     const handleBack = () => {
       if (step > 1) {
         setStep(step - 1); // Move back to the previous step
       }
     };
+
     const DaStyles2 = [
         "p-1",
         "mr-3",
@@ -115,8 +127,6 @@ const LandingPage = () => {
                                             </div>
                                             </div>
                                           
-                                        
-                                            
                                             <div className=" md:mt-4 cursor-pointer flex" >
                                                 <span className={ step === 2 ? `${DaStyles1.join(" ")} `:`${DaStyles2.join(" ")} ` }>2</span>
                  
@@ -160,9 +170,8 @@ const LandingPage = () => {
                                                     <input type="text" 
                                                            className="w-full outline-none text-blue-900" 
                                                            placeholder="e.g, Stephen King" 
-                                                          
-
                                                            autoFocus 
+                                                           name="name"
                                                            value={formData.name}
                                                            onChange={handleInputChange}
                                                            />
@@ -173,10 +182,9 @@ const LandingPage = () => {
                                                 <label className="my-1 text-sm label flex"><span>Email Address</span> <span className="ml-auto text-red-400">{errors.email}</span></label>
                                                     <div className="flex items-center border rounded-md px-3 mt-1 py-2">
                                                     <input type="Email" 
-                                                           className="w-full outline-none text-blue-900" 
-                                                           placeholder="e.g, stephenking@lorem.com" 
-                                                         
-
+                                                           className="w-full outline-none text-blue-900 text-block" 
+                                                           placeholder="e.g, stephenking@lorem.com"
+                                                           name="email"
                                                            value={formData.email} 
                                                            onChange={handleInputChange}
                                                            />
@@ -188,17 +196,15 @@ const LandingPage = () => {
                                                     <div className="flex items-center border rounded-md px-3 mt-1 py-2">
                                                     <input type="text" 
                                                            className="w-full outline-none text-blue-900" 
-                                                           placeholder="e.g, +1 234 567 890"
-                                                         
+                                                           name="phoneNumber"
+                                                           placeholder="e.g, +1 234 567 890"                                                      
                                                            value={formData.phoneNumber}
                                                            onChange={handleInputChange}
                                                            />
                                                     </div>
                                                 </div>
-
-                                                        
-                                                
                                                 </form>
+
                                                 </div>
                                                  )}
                                           
@@ -211,41 +217,81 @@ const LandingPage = () => {
                                           <h2 className="text-2xl mt-2 font-bold text-blue-900">Select your plan</h2>
                                                 <p className="text-sm text-gray-300">You have the option of monthly or yearly billing</p>
 
-                                                <div className="grid grid-cols-3 gap-3 mt-5">
-                                                        <div className="p-4 border-2 rounded-md hover:border-blue-900 ">
-                                                            <div className="w-8 h-8 flex justify-center align- items-center bg-yellow-500 rounded-full">
+                                                <div className={Sub ?"grid md:grid-cols-3 grid-cols-1 gap-3 mt-5":"hidden"}>
+                                                        <div className="p-4 flex md:grid border-2 rounded-md hover:border-blue-900 ">
+                                                            <div className=" md:mr-0 mr-4">
                                                             <img src={Arcade} alt="Arcade" />
                                                             </div>
-                                                            <div className="mt-6">
-                                                                <p>Arcade</p>
+                                                            <div className="md:mt-6 ">
+                                                                <p className="font-bold text-blue-900">Arcade</p>
                                                                 <p className="text-xs text-gray-400">$9/mo</p>
                                                             </div>
                                                         </div>
 
-                                                        <div className="p-4 border-2 rounded-md hover:border-blue-900 ">
-                                                            <div className="w-8 h-8 flex justify-center align- items-center bg-yellow-500 rounded-full">
+                                                        <div className="p-4 flex md:grid border-2 rounded-md hover:border-blue-900 ">
+                                                            <div className="md:mr-0 mr-4">
                                                                 <img src={Advanced} alt="Advanced" />
                                                             </div>
-                                                            <div className="mt-6">
-                                                                <p>Arcade</p>
+                                                            <div className="md:mt-6">
+                                                                <p className="font-bold text-blue-900">Advanced</p>
                                                                 <p className="text-xs text-gray-400">$9/mo</p>
                                                             </div>
                                                         </div>
-                                                        <div className="p-4 border-2 rounded-md hover:border-blue-900 ">
-                                                            <div className="w-8 h-8 flex justify-center align- items-center bg-yellow-500 rounded-full">
+                                                        <div className="p-4 flex md:grid border-2 rounded-md hover:border-blue-900 ">
+                                                            <div className="md:mr-0 mr-4">
                                                                 <img src={Pro} alt="pro" />
                                                             </div>
-                                                            <div className="mt-6">
-                                                                <p>Arcade</p>
+                                                            <div className="md:mt-6">
+                                                                <p className="font-bold text-blue-900">Pro </p>
                                                                 <p className="text-xs text-gray-400">$9/mo</p>
                                                             </div>
                                                         </div>
 
                                                 </div>
+                                                <div className={Sub ?"hidden":"grid md:grid-cols-3 grid-cols-1 gap-3 mt-5"}>
+                                                        <div className="p-4 flex md:grid border-2 rounded-md hover:border-blue-900 ">
+                                                            <div className=" md:mr-0 mr-4">
+                                                            <img src={Arcade} alt="Arcade" />
+                                                            </div>
+                                                            <div className="md:mt-6 ">
+                                                                <p className="font-bold text-blue-900">Arcade</p>
+                                                                <p className="text-xs text-gray-400">$90/yr</p>
+                                                                <p className="text-xs text-blue-900">2 months free</p>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="p-4 flex md:grid border-2 rounded-md hover:border-blue-900 ">
+                                                            <div className="md:mr-0 mr-4">
+                                                                <img src={Advanced} alt="Advanced" />
+                                                            </div>
+                                                            <div className="md:mt-6">
+                                                                <p className="font-bold text-blue-900">Advanced</p>
+                                                                <p className="text-xs text-gray-400">$120/mo</p>
+                                                                <p className="text-xs text-blue-900">2 months free</p>
+
+                                                            </div>
+                                                        </div>
+                                                        <div className="p-4 flex md:grid border-2 rounded-md hover:border-blue-900 ">
+                                                            <div className="md:mr-0 mr-4">
+                                                                <img src={Pro} alt="pro" />
+                                                            </div>
+                                                            <div className="md:mt-6">
+                                                                <p className="font-bold text-blue-900">Pro</p>
+                                                                <p className="text-xs text-gray-400">$150/mo</p>
+                                                                <p className="text-xs text-blue-900">2 months free</p>
+
+                                                            </div>
+                                                        </div>
+
+                                                </div>
                                                 <div className="bg-blue-50 flex p-2 rounded-md mt-3 justify-center">
-                                                    <p className="text-sm mr-3">Monthly</p>
-                                                    <p><img src={Check} alt="Check" /></p>
-                                                    <p className="text-sm text-gray-400 ">Yearly</p>
+                                                    <p className={Sub?"text-sm  text-blue-900 font-bold":"text-sm text-gray-400 "}>Monthly</p>
+                                                    <p className="bg-blue-900 rounded-full px-1 mx-4  flex items-center" onClick={handleSub}>
+                                                        <span className= {Sub ? "bg-white h-4 w-4 p-1  rounded-full":"bg-transparent h-4 w-4 p-1  rounded-full"}></span>
+                                                        <span className={Sub ? "bg-transparent h-4 w-4 p-1  rounded-full":"bg-white h-4 w-4 p-1  rounded-full"}></span>
+                                                    </p>
+                                                    <p className={Sub? "text-sm text-gray-400  mr-3 ": "text-sm mr-3 text-blue-900 font-bold"}>Yearly</p>
                                                 </div>
                                                 
                                  </div>
