@@ -8,53 +8,47 @@ import { useState } from "react"
 
 
 const LandingPage = () => {
-    const [step, setStep] = useState(1); // Initialize step state to 1
+    const [step, setStep] = useState(1); 
     
-//     const [formData, setFormData] = useState({
-//     name: '',
-//     email: '',
-//     phoneNumber: '',
-//   });
 
-//   const [errors, setErrors] = useState({
-//     name: '',
-//     email: '',
-//     phoneNumber: '',
-//   });
+    const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phoneNumber: '',
+  });
 
-//   const handleInputChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData({ ...formData, [name]: value });
-//   };
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    phoneNumber: '',
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
     const handleNext = (e) => {
         e.preventDefault();
+        
+        const newErrors = {};
+    if (formData.name.trim() === '') {
+      newErrors.name = 'Name is required';
+    }
+    if (formData.email.trim() === '') {
+      newErrors.email = 'Email is required';
+    }
+    if (formData.phoneNumber.trim() === '') {
+      newErrors.phoneNumber = 'Phone Number is required';
+    }
+
+    if (Object.keys(newErrors).length === 0) {
         if (step < 4) {
             setStep(step + 1); // Move to the next step
         }
-    //     const newErrors = {};
-    // if (formData.name.trim() === '') {
-    //   newErrors.name = 'Name is required';
-    // }
-    // if (formData.email.trim() === '') {
-    //   newErrors.email = 'Email is required';
-    // }
-    // if (formData.phoneNumber.trim() === '') {
-    //   newErrors.phoneNumber = 'Phone Number is required';
-    // }
-
-    // if (Object.keys(newErrors).length === 0) {
-      // No errors, proceed to the next step or action
-      // Add your logic here for what should happen when all fields are valid
-      // For now, you can just console.log the form data
-    //   console.log(formData);
+      console.log(formData);
      
-    // } else {
-    //   // There are errors, update the errors state
-    //   setErrors(newErrors);
-    // }
-
-    if (step < 2) {
-        setStep(step + 1); // Move to the next step
+    } else {
+      setErrors(newErrors);
     }
             
         }
@@ -113,7 +107,7 @@ const LandingPage = () => {
                             <div className="grid md:grid-cols-3 md:p-2 grid-cols-1 ">
                                     <div className="LandingBg col-span-1 p-5 md:block flex md:justify-left justify-center ">
                                         <div className="md:block flex md:ml-0 md:mt-0 mt-2  justify-center ">
-                                            <div className=" cursor-pointer flex" >
+                                            <div className=" cursor-pointer flex">
                                                 <span className={ step === 1 ? `${DaStyles1.join(" ")} `:`${DaStyles2.join(" ")} ` }>1</span>
                                             <div className="md:block hidden">
                                             <p className="text-gray-300 text-sm ">STEP 1</p>
@@ -161,7 +155,7 @@ const LandingPage = () => {
                                                 <p className="text-sm text-gray-300">Please provide name, email address, and phone number</p>
                                             <form>
                                                 <div className="mb-3 mt-6">  
-                                                <label className="my-1 text-sm label flex"><span>Name</span> <span className="ml-auto text-red-200"></span></label>
+                                                <label className="my-1 text-sm label flex"><span>Name</span> <span className="ml-auto text-red-400">{errors.name}</span></label>
                                                     <div className="flex items-center border rounded-md px-3 mt-1 py-2">
                                                     <input type="text" 
                                                            className="w-full outline-none text-blue-900" 
@@ -169,35 +163,35 @@ const LandingPage = () => {
                                                           
 
                                                            autoFocus 
-                                                        //    value={formData.name}
-                                                        //    onChange={handleInputChange}
+                                                           value={formData.name}
+                                                           onChange={handleInputChange}
                                                            />
                                                     </div>
                                                 </div>
 
                                                 <div className="mb-3 mt-6">  
-                                                <label className="my-1 text-sm label flex"><span>Email Address</span> <span className="ml-auto text-red-200"></span></label>
+                                                <label className="my-1 text-sm label flex"><span>Email Address</span> <span className="ml-auto text-red-400">{errors.email}</span></label>
                                                     <div className="flex items-center border rounded-md px-3 mt-1 py-2">
                                                     <input type="Email" 
                                                            className="w-full outline-none text-blue-900" 
                                                            placeholder="e.g, stephenking@lorem.com" 
                                                          
 
-                                                        //    value={formData.email} 
-                                                        //    onChange={handleInputChange}
+                                                           value={formData.email} 
+                                                           onChange={handleInputChange}
                                                            />
                                                     </div>
                                                 </div>
 
                                                 <div className="mb-3 mt-6">  
-                                                <label className="my-1 text-sm label flex"><span>Phone Number</span> <span className="ml-auto text-red-200"></span></label>
+                                                <label className="my-1 text-sm label flex"><span>Phone Number</span> <span className="ml-auto text-red-400">{errors.phoneNumber}</span></label>
                                                     <div className="flex items-center border rounded-md px-3 mt-1 py-2">
                                                     <input type="text" 
                                                            className="w-full outline-none text-blue-900" 
                                                            placeholder="e.g, +1 234 567 890"
                                                          
-                                                        //    value={formData.phoneNumber}
-                                                        //    onChange={handleInputChange}
+                                                           value={formData.phoneNumber}
+                                                           onChange={handleInputChange}
                                                            />
                                                     </div>
                                                 </div>
