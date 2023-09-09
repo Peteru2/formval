@@ -8,18 +8,25 @@ body{
 }
 .LandingBg{
     background: url("./images/bg-sidebar-desktop.svg");
-    height: cover!important;
+    height: 550px!important;
     border-radius: 10px;
     width: 80%!important
 }
     
 .pageBody{
-    display: flex;
+    display: grid;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     width:cover;
-    margin-top:10px;
+    margin-top:40px;
    
+}
+.actionButton{
+    display: flex;
+}
+.actionButton1{
+    display: none;
+
 }
 @media only screen  and (max-width: 1300px){
     .Landing{
@@ -53,23 +60,29 @@ body{
         left:50%;
         width:90%;
         background: white;
-        padding: 10px;
+        padding: 15px 10px;
         border-radius: 10px;
-        transform: translate(-50%, -25%);
+        transform: translate(-50%, -130px);
+        box-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.15);
        
     }
     /* .active{
         position: relative;
     } */
-    .actionButton{
+    .actionButton1{
         position:absolute;
        display: flex;
-       justify-content: space-between
-       /* top:0;
-        bottom:-23%; */
+       justify-content: space-between;
+        background: white;
+        padding: 10px;
+        bottom:0%;
+        width: 100%
         ;
 
         
+    }
+    .actionButton{
+        display: none;
     }
 }
 @media only screen  and (max-width: 480px){

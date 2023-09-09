@@ -109,10 +109,10 @@ const LandingPage = () => {
     ]
     return ( 
             <>
-                    <section className=" Landing  my-auto align-center bg-white rounded-md">
+                    <section className=" Landing  align-center bg-white rounded-md">
                             <div className="grid md:grid-cols-3 md:p-2 grid-cols-1 ">
                                     <div className="LandingBg col-span-1 p-5 md:block flex md:justify-left justify-center ">
-                                        <div className="md:block flex md:ml-0 md:mt-0 mt-4  justify-center ">
+                                        <div className="md:block flex md:ml-0 md:mt-0 mt-2  justify-center ">
                                             <div className=" cursor-pointer flex" >
                                                 <span className={ step === 1 ? `${DaStyles1.join(" ")} `:`${DaStyles2.join(" ")} ` }>1</span>
                                             <div className="md:block hidden">
@@ -153,8 +153,9 @@ const LandingPage = () => {
                                             </div>
                                             </div>
 
+                                          
+                                         < div className="col-span-2 pageBody " >
                                             {step === 1 && (
-                                            < div className="col-span-2 pageBody " >
                                                 <div>
                                                 <h2 className="text-2xl mt-2 font-bold text-blue-900">Personal Info</h2>
                                                 <p className="text-sm text-gray-300">Please provide name, email address, and phone number</p>
@@ -201,19 +202,16 @@ const LandingPage = () => {
                                                     </div>
                                                 </div>
 
-                                                        <div className=" actionButton">
-                                                        <button onClick={handleNext} className="ml-auto flex justify-center mt-32 rounded-md bg-blue-800 px-4 py-2 w-32 text-center text-white " >
-                                                            Next Step
-                                                        </button>
-                                                        </div>
+                                                        
                                                 
                                                 </form>
                                                 </div>
-                                            </div>
-                                            )}
+                                                 )}
+                                          
+                                           
                                             
                                   {step === 2 && (       
-                                   <div  className="col-span-2 pageBody">
+                                
                                     <div>       
                                                                          
                                           <h2 className="text-2xl mt-2 font-bold text-blue-900">Select your plan</h2>
@@ -255,23 +253,11 @@ const LandingPage = () => {
                                                     <p><img src={Check} alt="Check" /></p>
                                                     <p className="text-sm text-gray-400 ">Yearly</p>
                                                 </div>
-                                                <div className="flex mt-32" >
-                                                    <div className=" text-gray-400 mt-1 hover:text-blue-900">
-                                                        <button onClick={handleBack}>
-                                                            Go Back
-                                                        </button>
-                                                    </div>
-                                                    
-                                                        <button onClick={handleNext} className="ml-auto flex rounded-md bg-blue-900 px-4 py-2 w-32 text-center text-white ">
-                                                                Next Step
-                                                        </button>
-                                                   
-                                                </div>
-                                                </div>
-                                   </div>
+                                                
+                                 </div>
                                     )}
 
-                                { step === 3   && (<div  className="col-span-2 pageBody">
+                                { step === 3   && (
                                          <div>                                                  
                                                 <h2 className="text-2xl mt-2 font-bold text-blue-900">Pick add-ons</h2>
                                                 <p className="text-xs text-gray-300">Add-ons helps enhance your gaming experience</p>
@@ -306,24 +292,13 @@ const LandingPage = () => {
                                                         +$2/mo
                                                     </p>
                                                 </div>
-                                                <div className="flex mt-32" >
-                                                    <div className=" text-gray-400 mt-1 hover:text-blue-900">
-                                                        <button onClick={handleBack}>
-                                                            Go Back
-                                                        </button>
-                                                    </div>
-                                                    
-                                                        <button onClick={handleNext} className="ml-auto rounded-md bg-blue-900 px-4 py-2 w-32 text-center text-white ">
-                                                                Next Step
-                                                        </button>
-                                                   
-                                                </div>
-                                                </div>
+                                                
+                                            </div>
                                                
-                                                </div>
+                                               
                                             )}
 
-                                               {step === 4 && ( <div  className="col-span-2 pageBody ">
+                                               {step === 4 && ( 
                                          <div>                                                  
                                                 <h2 className="text-2xl mt-2 font-bold text-blue-900">Finishing Up</h2>
                                                 <p className="text-xs text-gray-300">Double-check everything looks OK before confirming</p>
@@ -352,24 +327,51 @@ const LandingPage = () => {
                                                         <p className="text-gray-400 text-sm">Total(per month)</p>
                                                         <p className="text-blue-900 ml-auto font-bold">+$12/mo</p>
                                                     </div>
-                                                    <div className="flex mt-32" >
-                                                    <div className=" text-gray-400 mt-1 hover:text-blue-900">
+                                                    
+                                               
+                                                </div>
+                                              
+                                               
+                                              )}  
+
+
+                                    <div className="actionButton" >   
+                                            <div className={step === 1 ? "hidden":" text-gray-400  hover:text-blue-900"}>
                                                         <button onClick={handleBack}>
                                                             Go Back
                                                         </button>
                                                     </div>
                                                     
-                                                        <button  className="ml-auto rounded-md bg-blue-700 px-4 py-2 w-24 text-center text-white ">
+                                                        <button onClick={handleNext} className={step === 4?"hidden":"ml-auto rounded-md bg-blue-900 px-4 h-10 py-2 w-32 text-center text-white "}>
+                                                                Next Step
+                                                        </button>
+                                                        <button onClick={handleNext} className={step ===4 ? "ml-auto rounded-md bg-blue-600 px-4 py-2 h-10 w-32 text-center text-white " : "hidden"}>
                                                                 Submit
                                                         </button>
                                                    
                                                 </div>
+                                                   
                                                 </div>
-                                              
+
+                                                  </div>
+                                  
+                                                      
+                                                  <div className="actionButton1" >   
+                                            <div className={step === 1 ? "hidden":" text-gray-400  hover:text-blue-900"}>
+                                                        <button onClick={handleBack}>
+                                                            Go Back
+                                                        </button>
+                                                    </div>
+                                                    
+                                                        <button onClick={handleNext} className={step === 4?"hidden":"ml-auto rounded-md bg-blue-900 px-4 h-10 py-2 w-32 text-center text-white "}>
+                                                                Next Step
+                                                        </button>
+                                                        <button onClick={handleNext} className={step ===4 ? "ml-auto rounded-md bg-blue-600 px-4 py-2 h-10 w-32 text-center text-white " : "hidden"}>
+                                                                Submit
+                                                        </button>
+                                                   
                                                 </div>
-                                              )}  
-                            </div>
-                           
+                                
                     </section>
             </>
      );
