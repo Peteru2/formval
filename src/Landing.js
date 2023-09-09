@@ -3,18 +3,32 @@ import "./style.css"
 import Arcade from "./images/icon-arcade.svg"
 import Advanced from "./images/icon-advanced.svg"
 import Pro from "./images/icon-pro.svg"
-import Check from "./images/icon-checkmark.svg"
 import { useState } from "react"
 
 
 const LandingPage = () => {
     const [step, setStep] = useState(1); 
     const [Sub, setSub] = useState(true)
+    // const [Plan, SetPlan] = useState({
+    //     Arcade: false,
+
+    // })
     
     const handleSub = ()=>{
         setSub(!Sub)
     }
+    const handleArcade1 = () => {
 
+        const arcadeElements = document.querySelectorAll(".Arcade p");
+        arcadeElements.forEach((element, index) => {
+          if (index === 0) {
+            console.log("First Paragraph:", element.textContent);
+          } else if (index === 1) {
+            console.log("Second Paragraph:", element.textContent);
+          }
+        });
+      };
+   
     const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -48,9 +62,7 @@ const LandingPage = () => {
             }
 
             if (Object.keys(newErrors).length === 0) {
-                newErrors.phoneNumber=''
-                newErrors.email=''
-                newErrors.name =''
+                setErrors({});
 
                     if (step < 4) {
                         setStep(step + 1); // Move to the next step
@@ -217,18 +229,18 @@ const LandingPage = () => {
                                           <h2 className="text-2xl mt-2 font-bold text-blue-900">Select your plan</h2>
                                                 <p className="text-sm text-gray-300">You have the option of monthly or yearly billing</p>
 
-                                                <div className={Sub ?"grid md:grid-cols-3 grid-cols-1 gap-3 mt-5":"hidden"}>
+                                                <div className={Sub ?"grid md:grid-cols-3 grid-cols-1 gap-3 mt-5":"hidden"} onClick={handleArcade1}>
                                                         <div className="p-4 flex md:grid border-2 rounded-md hover:border-blue-900 ">
                                                             <div className=" md:mr-0 mr-4">
                                                             <img src={Arcade} alt="Arcade" />
                                                             </div>
-                                                            <div className="md:mt-6 ">
+                                                            <div className="md:mt-6 Arcade" >
                                                                 <p className="font-bold text-blue-900">Arcade</p>
                                                                 <p className="text-xs text-gray-400">$9/mo</p>
                                                             </div>
                                                         </div>
 
-                                                        <div className="p-4 flex md:grid border-2 rounded-md hover:border-blue-900 ">
+                                                        <div className="p-4 flex md:grid border-2 rounded-md hover:border-blue-900 " onClick={handleArcade1}>
                                                             <div className="md:mr-0 mr-4">
                                                                 <img src={Advanced} alt="Advanced" />
                                                             </div>
@@ -237,7 +249,7 @@ const LandingPage = () => {
                                                                 <p className="text-xs text-gray-400">$9/mo</p>
                                                             </div>
                                                         </div>
-                                                        <div className="p-4 flex md:grid border-2 rounded-md hover:border-blue-900 ">
+                                                        <div className="p-4 flex md:grid border-2 rounded-md hover:border-blue-900 " >
                                                             <div className="md:mr-0 mr-4">
                                                                 <img src={Pro} alt="pro" />
                                                             </div>
