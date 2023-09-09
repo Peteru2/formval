@@ -336,7 +336,7 @@ const LandingPage = () => {
 
 
                                     <div className="actionButton" >   
-                                            <div className={step === 1 ? "hidden":" text-gray-400  hover:text-blue-900"}>
+                                            <div className={step === 1 ? "hidden":" text-gray-400  hover:text-blue-900 mt-2 "}>
                                                         <button onClick={handleBack}>
                                                             Go Back
                                                         </button>
@@ -357,7 +357,7 @@ const LandingPage = () => {
                                   
                                                       
                                                   <div className="actionButton1" >   
-                                            <div className={step === 1 ? "hidden":" text-gray-400  hover:text-blue-900"}>
+                                            <div className={step === 1 ? "hidden":" text-gray-400  hover:text-blue-900 mt-2"}>
                                                         <button onClick={handleBack}>
                                                             Go Back
                                                         </button>
