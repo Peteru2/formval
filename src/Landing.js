@@ -3,12 +3,19 @@ import "./style.css"
 import Arcade from "./images/icon-arcade.svg"
 import Advanced from "./images/icon-advanced.svg"
 import Pro from "./images/icon-pro.svg"
+import CheckField from "./CheckField"
 import { useState } from "react"
 
 
 const LandingPage = () => {
     const [step, setStep] = useState(1); 
     const [Sub, setSub] = useState(true)
+    const [isChecked, setIsChecked] = useState(false);
+
+  const handleDivClick = () => {
+    setIsChecked(!isChecked);
+  };
+
     // const [Plan, SetPlan] = useState({
     //     Arcade: false,
 
@@ -45,7 +52,6 @@ const LandingPage = () => {
     // e.preventDefault();
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    console.log(formData);
   };
     const handleNext = (e) => {
         e.preventDefault();
@@ -314,36 +320,22 @@ const LandingPage = () => {
                                                 <h2 className="text-2xl mt-2 font-bold text-blue-900">Pick add-ons</h2>
                                                 <p className="text-xs text-gray-300">Add-ons helps enhance your gaming experience</p>
 
-                                                <div className="flex border-2 border-blue-900 p-4 rounded-md mt-8 ">
-                                                    <input type="checkbox" />
-                                                    <div className="ml-3">
-                                                        <p className="text-blue-900 text-sm " >Online Service</p>
-                                                        <p className="text-gray-300 text-xs ">Access to multi-player game</p>
-                                                    </div>
-                                                    <p className=" md:ml-32 ml-auto text-sm text-blue-700 mt-1">
-                                                        +$1/mo
-                                                    </p>
-                                                </div>
-                                                <div className="flex border-2 border-blue-900 p-4 rounded-md mt-8 ">
-                                                    <input type="checkbox" />
-                                                    <div className="ml-3">
-                                                        <p className="text-blue-900 text-sm" >Large Storage</p>
-                                                        <p className="text-gray-300 text-xs">Extra 1TB of cloud save</p>
-                                                    </div>
-                                                    <p className="md:ml-32 ml-auto text-sm text-blue-700 mt-1">
-                                                        +$2/mo
-                                                    </p>
-                                                </div>
-                                                <div className="flex border-2 border-blue-900 p-4 rounded-md mt-8 w-full">
-                                                    <input type="checkbox" />
-                                                    <div className="ml-3">
-                                                        <p className="text-blue-900 text-sm" >Customizble Profile</p>
-                                                        <p className="text-gray-300 text-xs">Custome theme on your profile</p>
-                                                    </div>
-                                                    <p className="md:ml-32 ml-auto  text-sm text-blue-700 mt-1">
-                                                        +$2/mo
-                                                    </p>
-                                                </div>
+                                                <CheckField
+                                                    label="Online Service"
+                                                    description="Access to multi-player game"
+                                                    price="+$1/mo"
+                                                />
+                                                <CheckField
+                                                    label="Large Storage"
+                                                    description="Extra 1TB of cloud save"
+                                                    price="+$2/mo"
+                                                />
+                                                <CheckField
+                                                    label="Customizble Profile"
+                                                    description="Custom theme on your profile"
+                                                    price="+$2/mo"
+                                                />
+                                                    
                                                 
                                             </div>
                                                
