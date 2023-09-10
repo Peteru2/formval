@@ -12,11 +12,11 @@ const CheckField = ({ label, description, price }) => {
 // console.log(check)
 //   }
 // value={isChecked?"2":"3"}
-
+  }
     return (
         <>
                 <div className={isChecked?"flex border-2 border-blue-900 p-4 rounded-md mt-8 cursor-pointer":"flex border-2 p-4 rounded-md mt-8 cursor-pointer"} onClick={handleDivClick}>
-            <input type="checkbox" checked={isChecked} value={isChecked?"2":"3"} className="check" name="checkbox" onChange={() => {}} />
+            <input type="checkbox" checked={isChecked} value={isChecked?"2":"3"} className="check outline-none" name="checkbox" onChange={() => {}} />
             <div className="ml-3">
                 <p className="text-blue-900 text-sm">{label}</p>
                 <p className="text-gray-300 text-xs">{description}</p>
