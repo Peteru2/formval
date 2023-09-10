@@ -4,17 +4,15 @@ import Arcade from "./images/icon-arcade.svg"
 import Advanced from "./images/icon-advanced.svg"
 import Pro from "./images/icon-pro.svg"
 import CheckField from "./CheckField"
+import Appreciation from "./Appreciation"
 import { useState } from "react"
 
 
 const LandingPage = () => {
     const [step, setStep] = useState(1); 
     const [Sub, setSub] = useState(true)
-    const [isChecked, setIsChecked] = useState(false);
-
-  const handleDivClick = () => {
-    setIsChecked(!isChecked);
-  };
+    
+  
 
     // const [Plan, SetPlan] = useState({
     //     Arcade: false,
@@ -70,7 +68,7 @@ const LandingPage = () => {
             if (Object.keys(newErrors).length === 0) {
                 setErrors({});
 
-                    if (step < 4) {
+                    if (step < 5) {
                         setStep(step + 1); // Move to the next step
                     }
                 console.log(formData);
@@ -377,9 +375,14 @@ const LandingPage = () => {
                                               
                                                
                                               )}  
+                                              {step === 5 && ( 
+                                                    <Appreciation />                                            
+                                                
+                                               
+                                              )}  
 
 
-                                    <div className="actionButton" >   
+                                    <div className={step === 5 ? "hidden":"actionButton" }>   
                                             <div className={step === 1 ? "hidden":" text-gray-400  hover:text-blue-900 mt-2 "}>
                                                         <button onClick={handleBack}>
                                                             Go Back
@@ -400,7 +403,7 @@ const LandingPage = () => {
                                                   </div>
                                   
                                                       
-                                                  <div className="actionButton1" >   
+                                                  <div className={step ===5 ? "hidden":"actionButton1"} >   
                                             <div className={step === 1 ? "hidden":" text-gray-400  hover:text-blue-900 mt-2"}>
                                                         <button onClick={handleBack}>
                                                             Go Back
