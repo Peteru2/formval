@@ -1,11 +1,12 @@
 // import BackgroundDesk from "./images/bg-sidebar-desktop.svg"
+
 import "./style.css"
 import Arcade from "./images/icon-arcade.svg"
 import Advanced from "./images/icon-advanced.svg"
 import Pro from "./images/icon-pro.svg"
 import CheckField from "./CheckField"
 import Appreciation from "./Appreciation"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 
 const LandingPage = () => {
@@ -14,10 +15,26 @@ const LandingPage = () => {
     
   
 
-    // const [Plan, SetPlan] = useState({
-    //     Arcade: false,
+    const [isDivClicked, setIsDivClicked] = useState(false);
+    const [clickedPrice, setClickedPrice] = useState(null);
+    const [clickedDivIndex, setClickedDivIndex] = useState(null);
 
-    // })
+  // Function to update the state when a div is clicked
+  const handleDivClick = (price, index) => {
+    setIsDivClicked(true);
+    setClickedPrice(price);
+    setClickedDivIndex(index); // Set the clicked div's index
+  };
+
+
+  useEffect(() => {
+    if (isDivClicked) {
+      console.log(`Div ${clickedDivIndex} is clicked. Price: ${clickedPrice}`);
+    } else {
+      console.log('No div is clicked.');
+    }
+  }, [isDivClicked, clickedPrice, clickedDivIndex]);
+
     
     const handleSub = ()=>{
         setSub(!Sub)
@@ -53,17 +70,27 @@ const LandingPage = () => {
   };
     const handleNext = (e) => {
         e.preventDefault();
-        
+        if(step===1){
                 const newErrors = {};
             if (formData.name.trim() === '') {
             newErrors.name = 'Name is required';
             }
-            if (formData.email.trim() === '') {
-            newErrors.email = 'Email is required';
-            }
-            if (formData.phoneNumber.trim() === '') {
-            newErrors.phoneNumber = 'Phone Number is required';
-            }
+
+            const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+                if (!formData.email.trim()) {
+                    newErrors.email = 'Email is required';
+                } else if (!emailRegex.test(formData.email)) {
+                    newErrors.email = 'Invalid email format';
+                }
+
+                // Phone number format validation using regex
+                const phoneRegex = /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/;
+                if (!formData.phoneNumber.trim()) {
+                    newErrors.phoneNumber = 'Phone Number is required';
+                } else if (!phoneRegex.test(formData.phoneNumber)) {
+                    newErrors.phoneNumber = 'Invalid phone number format';
+                }
+
 
             if (Object.keys(newErrors).length === 0) {
                 setErrors({});
@@ -73,10 +100,24 @@ const LandingPage = () => {
                     }
                 console.log(formData);
             
-            } else {
+            }
+         else {
             setErrors(newErrors);
             }
-        
+        }
+        if(step === 3){
+            if (isDivClicked) {
+                console.log(`Button clicked and div is clicked. Price: ${clickedPrice}`);
+                if (step < 5) {
+                    setStep(step + 1); // Move to the next step
+                }
+              } else {
+                console.log('Button clicked but no div is clicked.');
+              }
+        }
+        if (step < 5) {
+            setStep(step + 1); // Move to the next step
+        }
         }
   
   
@@ -318,21 +359,8 @@ const LandingPage = () => {
                                                 <h2 className="text-2xl mt-2 font-bold text-blue-900">Pick add-ons</h2>
                                                 <p className="text-xs text-gray-300">Add-ons helps enhance your gaming experience</p>
 
-                                                <CheckField
-                                                    label="Online Service"
-                                                    description="Access to multi-player game"
-                                                    price="+$1/mo"
-                                                />
-                                                <CheckField
-                                                    label="Large Storage"
-                                                    description="Extra 1TB of cloud save"
-                                                    price="+$2/mo"
-                                                />
-                                                <CheckField
-                                                    label="Customizble Profile"
-                                                    description="Custom theme on your profile"
-                                                    price="+$2/mo"
-                                                />
+                                                <CheckField onDivClick={handleDivClick}/>
+                                                   
                                                     
                                                 
                                             </div>
