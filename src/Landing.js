@@ -344,7 +344,7 @@ const LandingPage = () => {
                                                 </div>
                                                 <div className="bg-blue-50 flex p-2 rounded-md mt-3 justify-center">
                                                     <p className={Sub?"text-sm  text-blue-900 font-bold":"text-sm text-gray-400 "}>Monthly</p>
-                                                    <p className="bg-blue-900 rounded-full px-1 mx-4  flex items-center" onClick={handleSub}>
+                                                    <p className="bg-blue-900 rounded-full px-1 mx-4  flex items-center cursor-pointer" onClick={handleSub}>
                                                         <span className= {Sub ? "bg-white h-4 w-4 p-1  rounded-full":"bg-transparent h-4 w-4 p-1  rounded-full"}></span>
                                                         <span className={Sub ? "bg-transparent h-4 w-4 p-1  rounded-full":"bg-white h-4 w-4 p-1  rounded-full"}></span>
                                                     </p>

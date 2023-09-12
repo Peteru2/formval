@@ -35,7 +35,17 @@ const CheckField = ({onDivClick}) => {
     : 0;
       setDivData(updatedDivData);
       onDivClick(index.price);
-      console.log(updatedDivData[index].price);
+      console.log(updatedDivData[index].price );
+
+
+      const newTotalPrice = updatedDivData.reduce((acc, item) => {
+      if (item.isChecked) {
+        acc += item.price;
+      }
+      return acc;
+    }, 0);
+
+    console.log(newTotalPrice)
   };
 
   return (
@@ -43,7 +53,7 @@ const CheckField = ({onDivClick}) => {
       {divData.map((item, index) => (
         <div
           key={index}
-          className={item.isChecked ? 'flex border-2 border-blue-900 p-4 rounded-md mt-8 cursor-pointer' : 'flex border-2 p-4 rounded-md mt-8 cursor-pointer'}
+          className={item.isChecked ? 'flex border-2 border-blue-900 p-4 rounded-md mt-8 cursor-pointer bg-blue-50' : 'flex hover:bg-blue-50 border-2 p-4 rounded-md mt-8 cursor-pointer'}
           onClick={() => handleDivClick(index, item.originalPrice)}
         >
           <input type="checkbox" checked={item.isChecked} className="check outline-none" name="checkbox" onChange={() => {}} />
