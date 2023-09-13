@@ -2,7 +2,7 @@ import ThanksImg from "./images/icon-thank-you.svg"
 const Appreciation = () => {
     return (  
             <>
-                <div className=" flex justify-center items-center align-center">
+                <div className=" flex justify-center items-center align-center py-20 md:py-0 ">
                     <div>
                         <div className="flex justify-center mb-6">
                             <img src={ThanksImg} alt="Thanks" className=""/>

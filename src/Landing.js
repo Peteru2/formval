@@ -12,29 +12,12 @@ import { useState, useEffect } from "react"
 const LandingPage = () => {
     const [step, setStep] = useState(1); 
     const [Sub, setSub] = useState(true)
+    const [totalPrice, setTotalPrice] = useState({
+        title: "",
+        price:"",
+        label:""
+    });
     
-  
-
-    const [isDivClicked, setIsDivClicked] = useState(false);
-    const [clickedPrice, setClickedPrice] = useState(null);
-    const [clickedDivIndex, setClickedDivIndex] = useState(null);
-
-  // Function to update the state when a div is clicked
-  const handleDivClick = (price, index) => {
-    setIsDivClicked(true);
-    setClickedPrice(price);
-    setClickedDivIndex(index); // Set the clicked div's index
-  };
-
-
-  useEffect(() => {
-    if (isDivClicked) {
-      console.log(`Div ${clickedDivIndex} is clicked. Price: ${clickedPrice}`);
-    } else {
-      console.log('No div is clicked.');
-    }
-  }, [isDivClicked, clickedPrice, clickedDivIndex]);
-
     
     const handleSub = ()=>{
         setSub(!Sub)
@@ -65,11 +48,16 @@ const LandingPage = () => {
 
   const handleInputChange = (e) => {
     // e.preventDefault();
+    
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
     const handleNext = (e) => {
         e.preventDefault();
+        if(totalPrice.price === 0){
+        console.log("we are getting there")
+}
+       
         if(step===1){
                 const newErrors = {};
             if (formData.name.trim() === '') {
@@ -105,23 +93,27 @@ const LandingPage = () => {
             setErrors(newErrors);
             }
         }
+        if(step === 2){
+            if (step < 5) {
+                setStep(step + 1); // Move to the next step
+            }
+        }
         if(step === 3){
-            if (isDivClicked) {
-                console.log(`Button clicked and div is clicked. Price: ${clickedPrice}`);
-                if (step < 5) {
-                    setStep(step + 1); // Move to the next step
-                }
-              } else {
-                console.log('Button clicked but no div is clicked.');
-              }
+            if (step < 5) {
+                setStep(step + 1); // Move to the next step
+            }
         }
-        if (step < 5) {
-            setStep(step + 1); // Move to the next step
+        if(step === 4){
+            if (step < 5) {
+                setStep(step + 1); // Move to the next step
+            }
         }
+      
         }
   
   
-    const handleBack = () => {
+    const handleBack = (e) => {
+        e.preventDefault()
       if (step > 1) {
         setStep(step - 1); // Move back to the previous step
       }
@@ -170,6 +162,7 @@ const LandingPage = () => {
         "bg-blue-50"
         
     ]
+     console.log(totalPrice.price,totalPrice.title)
     return ( 
             <>
                     <section className=" Landing  align-center bg-white rounded-md">
@@ -359,7 +352,7 @@ const LandingPage = () => {
                                                 <h2 className="text-2xl mt-2 font-bold text-blue-900">Pick add-ons</h2>
                                                 <p className="text-xs text-gray-300">Add-ons helps enhance your gaming experience</p>
 
-                                                <CheckField onDivClick={handleDivClick}/>
+                                                <CheckField  total={totalPrice} setTotal={setTotalPrice}/>
                                                    
                                                     
                                                 
@@ -384,8 +377,8 @@ const LandingPage = () => {
                                                         </div>
                                                         <div className="pt-3">
                                                             <div className="flex">
-                                                            <p className="text-xs text-gray-300">Online Service</p>
-                                                            <p className="text-xs text-blue-900 ml-auto">+$1/mo</p>
+                                                            <p className="text-xs text-gray-300">{totalPrice.label}</p>
+                                                            <p className="text-xs text-blue-900 ml-auto">+${totalPrice.price}/mo</p>
                                                             </div>
                                                             <div className="flex mt-3">
                                                             <p className="text-xs text-gray-300">Large Storage</p>
