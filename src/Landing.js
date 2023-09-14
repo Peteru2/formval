@@ -14,7 +14,9 @@ const LandingPage = () => {
         price:"",
         label:""
     });
+    const [selectedDivIndex, setSelectedDivIndex] = useState(null);
     const [selectedItems, setSelectedItems] = useState([])
+    const [subscriptionValue, setSubscriptionValue] = useState('Monthly');
     const [clickedDiv, setClickedDiv] = useState({ 
         label: null, 
         priceValue: null });
@@ -105,6 +107,7 @@ const LandingPage = () => {
   
     const handleBack = (e) => {
         e.preventDefault()
+        setSelectedDivIndex(selectedDivIndex)
       if (step > 1) {
         setStep(step - 1); // Move back to the previous step
       }
@@ -153,6 +156,7 @@ const LandingPage = () => {
         "bg-blue-50"
         
     ]
+   
     const handleChange = () =>{
         setStep(2)
     }
@@ -257,7 +261,9 @@ const LandingPage = () => {
                                   {step === 2 && (    
                                             <div>
 
-                                        <Plan onPriceClick={handlePriceClick}/>
+                                        <Plan onPriceClick={handlePriceClick}   
+                                              subscriptionValue={subscriptionValue}
+                                              setSubscriptionValue={setSubscriptionValue}/>
 
                                             </div>   
                                   )}
@@ -293,8 +299,8 @@ const LandingPage = () => {
                                                     <div className="bg-blue-50 rounded-md p-4 mt-8">
                                                         <div className="flex pb-4 border-b-2">
                                                             <div>
-                                                                <p className="text-blue-900 text-sm">{clickedDiv.label}(Monthly)</p>
-                                                                <p className="text-blue-700 text-xs underline cursor" onClick={handleChange}>Change</p>
+                                                                <p className="text-blue-900 text-sm">{clickedDiv.label}({subscriptionValue})</p>
+                                                                <p className="text-blue-700 text-xs underline cursor-pointer" onClick={handleChange}>Change</p>
                                                             </div>
                                                             <p className="text-blue-900 text-xs ml-40 mt-2">+${clickedDiv.priceValue}/mo</p>
                                                         </div>

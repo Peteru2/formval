@@ -3,21 +3,28 @@ import Advanced from "./images/icon-advanced.svg"
 import Pro from "./images/icon-pro.svg"
 import { useState } from "react"
 
-const Plan = ({onPriceClick}) => {
+const Plan = ({onPriceClick, subscriptionValue, setSubscriptionValue}) => {
     const [Sub, setSub] = useState(true)
     const [selectedDivIndex, setSelectedDivIndex] = useState(null);
 
   const handleDivClick = (index, label, priceText) => {
+     setSelectedDivIndex(index); 
     const priceValue = parseInt(priceText.match(/\d+/)[0], 10);
     console.log(priceValue); // Log the extracted number value to the console
 
-    setSelectedDivIndex(index); // Set the selected div index in state
+   // Set the selected div index in state
 
     // Call the callback function to send the priceValue and label to the parent component
     onPriceClick({ label, priceValue });
   }
     const handleSub = ()=>{
+
         setSub(!Sub)
+        const newSubscriptionValue = Sub ? 'Monthly' : 'Yearly';
+
+        // Update the subscriptionValue state in the parent component
+        setSubscriptionValue(newSubscriptionValue);
+    
     }
 
     return ( 

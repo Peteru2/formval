@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CheckField = ({ setSelectedItems, total, setTotal}) => {
+const CheckField = ({ setSelectedItems, total, setTotal, onDivClick, setSelectedDivIndex}) => {
   const [divData, setDivData] = useState([
     {
       isChecked: false,
@@ -36,34 +36,14 @@ const CheckField = ({ setSelectedItems, total, setTotal}) => {
           label: item.label,
           price: item.originalPrice,
         }))
-    );
-    
 
-    updatedDivData[index].price = updatedDivData[index].isChecked
-    ? updatedDivData[index].originalPrice
-    : 0;
+    );
+  
       setDivData(updatedDivData);
 
-      const newTotalPrice = updatedDivData.reduce((acc, item) => {
-      if (item.isChecked) {
-        acc += item.price;
-      }
-      return acc;
-    }, 0);
+     
 
-    const newTotalDescrip = updatedDivData.reduce((acc, item) => {
-      if (item.isChecked) {
-        acc = item.description;
-      }
-      return acc;
-    }, "");
-
-    console.log(newTotalPrice, newTotalDescrip)
-    setTotal({
-      title:updatedDivData[index].price,
-      price:newTotalPrice,
-      label:updatedDivData[index].label
-    })
+    
   };
 
   return (
