@@ -77,7 +77,14 @@ const Plan = ({onPriceClick}) => {
 
                                                 </div>
                                                 <div className={Sub ?"hidden":"grid md:grid-cols-3 grid-cols-1 gap-3 mt-5"}>
-                                                        <div className="p-4 flex md:grid border-2 rounded-md hover:border-blue-900 ">
+                                                <div
+                                                           className={`p-4 flex md:grid border-2 rounded-md hover:border-blue-900 cursor-pointer ${
+                                                            selectedDivIndex === 3 ? 'bg-blue-50 border-blue-900' : ''
+                                                          }`}
+                                                            onClick={() => 
+                                                            handleDivClick(3, 'Arcade', "$90/mo")}
+                                                            >
+
                                                             <div className=" md:mr-0 mr-4">
                                                             <img src={Arcade} alt="Arcade" />
                                                             </div>
@@ -89,7 +96,13 @@ const Plan = ({onPriceClick}) => {
                                                             </div>
                                                         </div>
 
-                                                        <div className="p-4 flex md:grid border-2 rounded-md hover:border-blue-900 ">
+                                                        <div
+                                                           className={`p-4 flex md:grid border-2 rounded-md hover:border-blue-900 cursor-pointer ${
+                                                            selectedDivIndex === 4 ? 'bg-blue-50 border-blue-900' : ''
+                                                          }`}
+                                                            onClick={() => 
+                                                            handleDivClick(4, 'Advanced', "$120/mo")}
+                                                            >
                                                             <div className="md:mr-0 mr-4">
                                                                 <img src={Advanced} alt="Advanced" />
                                                             </div>
@@ -100,7 +113,14 @@ const Plan = ({onPriceClick}) => {
 
                                                             </div>
                                                         </div>
-                                                        <div className="p-4 flex md:grid border-2 rounded-md hover:border-blue-900 ">
+                                                        
+                                                        <div
+                                                           className={`p-4 flex md:grid border-2 rounded-md hover:border-blue-900 cursor-pointer ${
+                                                            selectedDivIndex === 5 ? 'bg-blue-50 border-blue-900' : ''
+                                                          }`}
+                                                            onClick={() => 
+                                                            handleDivClick(5, 'Pro', "$150/mo")}
+                                                            >
                                                             <div className="md:mr-0 mr-4">
                                                                 <img src={Pro} alt="pro" />
                                                             </div>
