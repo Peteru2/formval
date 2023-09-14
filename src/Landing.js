@@ -16,7 +16,7 @@ const LandingPage = () => {
     });
     const [selectedDivIndex, setSelectedDivIndex] = useState(null);
     const [selectedItems, setSelectedItems] = useState([])
-    const [subscriptionValue, setSubscriptionValue] = useState('Monthly');
+    const [subscriptionValue, setSubscriptionValue] = useState('Ye');
     const [clickedDiv, setClickedDiv] = useState({ 
         label: null, 
         priceValue: null });
@@ -261,7 +261,8 @@ const LandingPage = () => {
                                   {step === 2 && (    
                                             <div>
 
-                                        <Plan onPriceClick={handlePriceClick}   
+                                        <Plan 
+                                              onPriceClick={handlePriceClick}   
                                               subscriptionValue={subscriptionValue}
                                               setSubscriptionValue={setSubscriptionValue}/>
 

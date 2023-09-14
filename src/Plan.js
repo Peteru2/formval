@@ -20,7 +20,9 @@ const Plan = ({onPriceClick, subscriptionValue, setSubscriptionValue}) => {
     const handleSub = ()=>{
 
         setSub(!Sub)
-        const newSubscriptionValue = Sub ? 'Monthly' : 'Yearly';
+        const newSubscriptionValue = Sub ?  'Yearly' : 'Monthly';
+        console.log('New Subscription Value:', newSubscriptionValue);
+
 
         // Update the subscriptionValue state in the parent component
         setSubscriptionValue(newSubscriptionValue);
