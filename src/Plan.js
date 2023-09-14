@@ -10,10 +10,8 @@ const Plan = ({onPriceClick, subscriptionValue, setSubscriptionValue}) => {
   const handleDivClick = (index, label, priceText) => {
      setSelectedDivIndex(index); 
     const priceValue = parseInt(priceText.match(/\d+/)[0], 10);
-    console.log(priceValue); // Log the extracted number value to the console
-
+    
    // Set the selected div index in state
-
     // Call the callback function to send the priceValue and label to the parent component
     onPriceClick({ label, priceValue });
   }

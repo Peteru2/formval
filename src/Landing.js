@@ -16,7 +16,7 @@ const LandingPage = () => {
     });
     const [selectedDivIndex, setSelectedDivIndex] = useState(null);
     const [selectedItems, setSelectedItems] = useState([])
-    const [subscriptionValue, setSubscriptionValue] = useState('Ye');
+    const [subscriptionValue, setSubscriptionValue] = useState('Monthly');
     const [clickedDiv, setClickedDiv] = useState({ 
         label: null, 
         priceValue: null });
@@ -46,9 +46,6 @@ const LandingPage = () => {
   };
     const handleNext = (e) => {
         e.preventDefault();
-        if(totalPrice.price === 0){
-        console.log("we are getting there")
-}
        
         if(step===1){
                 const newErrors = {};
@@ -96,11 +93,7 @@ const LandingPage = () => {
                 setStep(step + 1); // Move to the next step
             }
         }
-        if(step === 4){
-            if (step < 5) {
-                setStep(step + 1); // Move to the next step
-            }
-        }
+        
       
         }
   
@@ -112,7 +105,18 @@ const LandingPage = () => {
         setStep(step - 1); // Move back to the previous step
       }
     };
-
+        const handleSubmit = ()=>{
+         if(clickedDiv.label===null || selectedItems === null){
+            alert("Not all fields has been filled");
+         }
+         else{
+            if(step === 4){
+            if (step < 5) {
+                setStep(step + 1); // Move to the next step
+            }
+        }
+         }
+        }
     const DaStyles2 = [
         "p-1",
         "mr-3",
@@ -339,7 +343,7 @@ const LandingPage = () => {
                                                         <button onClick={handleNext} className={step === 4?"hidden":"ml-auto rounded-md bg-blue-900 px-4 h-10 py-2 w-32 text-center text-white "}>
                                                                 Next Step
                                                         </button>
-                                                        <button onClick={handleNext} className={step ===4 ? "ml-auto rounded-md bg-blue-600 px-4 py-2 h-10 w-32 text-center text-white " : "hidden"}>
+                                                        <button onClick={handleSubmit} className={step ===4 ? "ml-auto rounded-md bg-blue-600 px-4 py-2 h-10 w-32 text-center text-white " : "hidden"}>
                                                                 Submit
                                                         </button>
                                                    
@@ -360,7 +364,7 @@ const LandingPage = () => {
                                                         <button onClick={handleNext} className={step === 4?"hidden":"ml-auto rounded-md bg-blue-900 px-4 h-10 py-2 w-32 text-center text-white "}>
                                                                 Next Step
                                                         </button>
-                                                        <button onClick={handleNext} className={step ===4 ? "ml-auto rounded-md bg-blue-600 px-4 py-2 h-10 w-32 text-center text-white " : "hidden"}>
+                                                        <button onClick={handleSubmit} className={step ===4 ? "ml-auto rounded-md bg-blue-600 px-4 py-2 h-10 w-32 text-center text-white " : "hidden"}>
                                                                 Submit
                                                         </button>
                                                    
