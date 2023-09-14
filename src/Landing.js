@@ -1,38 +1,28 @@
 // import BackgroundDesk from "./images/bg-sidebar-desktop.svg"
 
 import "./style.css"
-import Arcade from "./images/icon-arcade.svg"
-import Advanced from "./images/icon-advanced.svg"
-import Pro from "./images/icon-pro.svg"
+import Plan from "./Plan"
 import CheckField from "./CheckField"
 import Appreciation from "./Appreciation"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 
 const LandingPage = () => {
     const [step, setStep] = useState(1); 
-    const [Sub, setSub] = useState(true)
     const [totalPrice, setTotalPrice] = useState({
         title: "",
         price:"",
         label:""
     });
+    const [selectedItems, setSelectedItems] = useState([])
+    const [clickedDiv, setClickedDiv] = useState({ 
+        label: null, 
+        priceValue: null });
     
-    
-    const handleSub = ()=>{
-        setSub(!Sub)
-    }
-    const handleArcade1 = () => {
-
-        const arcadeElements = document.querySelectorAll(".Arcade p");
-        arcadeElements.forEach((element, index) => {
-          if (index === 0) {
-            console.log("First Paragraph:", element.textContent);
-          } else if (index === 1) {
-            console.log("Second Paragraph:", element.textContent);
-          }
-        });
-      };
+        const handlePriceClick = ({ label, priceValue }) => {
+            setClickedDiv({ label, priceValue }); // Set the clicked div information in the parent component
+          };
+        
    
     const [formData, setFormData] = useState({
     name: '',
@@ -60,7 +50,8 @@ const LandingPage = () => {
        
         if(step===1){
                 const newErrors = {};
-            if (formData.name.trim() === '') {
+   
+                if (formData.name.trim() === '') {
             newErrors.name = 'Name is required';
             }
 
@@ -162,6 +153,9 @@ const LandingPage = () => {
         "bg-blue-50"
         
     ]
+    const handleChange = () =>{
+        setStep(2)
+    }
      console.log(totalPrice.price,totalPrice.title)
     return ( 
             <>
@@ -260,99 +254,28 @@ const LandingPage = () => {
                                           
                                            
                                             
-                                  {step === 2 && (       
-                                
-                                    <div>       
+                                  {step === 2 && (    
+                                            <div>
+
+                                        <Plan onPriceClick={handlePriceClick}/>
+
+                                            </div>   
+                                  )}
+                            
                                                                          
-                                          <h2 className="text-2xl mt-2 font-bold text-blue-900">Select your plan</h2>
-                                                <p className="text-sm text-gray-300">You have the option of monthly or yearly billing</p>
-
-                                                <div className={Sub ?"grid md:grid-cols-3 grid-cols-1 gap-3 mt-5":"hidden"} onClick={handleArcade1}>
-                                                        <div className="p-4 flex md:grid border-2 rounded-md hover:border-blue-900 ">
-                                                            <div className=" md:mr-0 mr-4">
-                                                            <img src={Arcade} alt="Arcade" />
-                                                            </div>
-                                                            <div className="md:mt-6 Arcade" >
-                                                                <p className="font-bold text-blue-900">Arcade</p>
-                                                                <p className="text-xs text-gray-400">$9/mo</p>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="p-4 flex md:grid border-2 rounded-md hover:border-blue-900 " onClick={handleArcade1}>
-                                                            <div className="md:mr-0 mr-4">
-                                                                <img src={Advanced} alt="Advanced" />
-                                                            </div>
-                                                            <div className="md:mt-6">
-                                                                <p className="font-bold text-blue-900">Advanced</p>
-                                                                <p className="text-xs text-gray-400">$9/mo</p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="p-4 flex md:grid border-2 rounded-md hover:border-blue-900 " >
-                                                            <div className="md:mr-0 mr-4">
-                                                                <img src={Pro} alt="pro" />
-                                                            </div>
-                                                            <div className="md:mt-6">
-                                                                <p className="font-bold text-blue-900">Pro </p>
-                                                                <p className="text-xs text-gray-400">$9/mo</p>
-                                                            </div>
-                                                        </div>
-
-                                                </div>
-                                                <div className={Sub ?"hidden":"grid md:grid-cols-3 grid-cols-1 gap-3 mt-5"}>
-                                                        <div className="p-4 flex md:grid border-2 rounded-md hover:border-blue-900 ">
-                                                            <div className=" md:mr-0 mr-4">
-                                                            <img src={Arcade} alt="Arcade" />
-                                                            </div>
-                                                            <div className="md:mt-6 ">
-                                                                <p className="font-bold text-blue-900">Arcade</p>
-                                                                <p className="text-xs text-gray-400">$90/yr</p>
-                                                                <p className="text-xs text-blue-900">2 months free</p>
-
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="p-4 flex md:grid border-2 rounded-md hover:border-blue-900 ">
-                                                            <div className="md:mr-0 mr-4">
-                                                                <img src={Advanced} alt="Advanced" />
-                                                            </div>
-                                                            <div className="md:mt-6">
-                                                                <p className="font-bold text-blue-900">Advanced</p>
-                                                                <p className="text-xs text-gray-400">$120/mo</p>
-                                                                <p className="text-xs text-blue-900">2 months free</p>
-
-                                                            </div>
-                                                        </div>
-                                                        <div className="p-4 flex md:grid border-2 rounded-md hover:border-blue-900 ">
-                                                            <div className="md:mr-0 mr-4">
-                                                                <img src={Pro} alt="pro" />
-                                                            </div>
-                                                            <div className="md:mt-6">
-                                                                <p className="font-bold text-blue-900">Pro</p>
-                                                                <p className="text-xs text-gray-400">$150/mo</p>
-                                                                <p className="text-xs text-blue-900">2 months free</p>
-
-                                                            </div>
-                                                        </div>
-
-                                                </div>
-                                                <div className="bg-blue-50 flex p-2 rounded-md mt-3 justify-center">
-                                                    <p className={Sub?"text-sm  text-blue-900 font-bold":"text-sm text-gray-400 "}>Monthly</p>
-                                                    <p className="bg-blue-900 rounded-full px-1 mx-4  flex items-center cursor-pointer" onClick={handleSub}>
-                                                        <span className= {Sub ? "bg-white h-4 w-4 p-1  rounded-full":"bg-transparent h-4 w-4 p-1  rounded-full"}></span>
-                                                        <span className={Sub ? "bg-transparent h-4 w-4 p-1  rounded-full":"bg-white h-4 w-4 p-1  rounded-full"}></span>
-                                                    </p>
-                                                    <p className={Sub? "text-sm text-gray-400  mr-3 ": "text-sm mr-3 text-blue-900 font-bold"}>Yearly</p>
-                                                </div>
-                                                
-                                 </div>
-                                    )}
+                                         
 
                                 { step === 3   && (
                                          <div>                                                  
                                                 <h2 className="text-2xl mt-2 font-bold text-blue-900">Pick add-ons</h2>
                                                 <p className="text-xs text-gray-300">Add-ons helps enhance your gaming experience</p>
 
-                                                <CheckField  total={totalPrice} setTotal={setTotalPrice}/>
+                                                <CheckField  
+                                                total={totalPrice} 
+                                                setTotal={setTotalPrice}
+                                                selectedItems={selectedItems} 
+                                                setSelectedItems={setSelectedItems}
+                                                />
                                                    
                                                     
                                                 
@@ -370,36 +293,32 @@ const LandingPage = () => {
                                                     <div className="bg-blue-50 rounded-md p-4 mt-8">
                                                         <div className="flex pb-4 border-b-2">
                                                             <div>
-                                                                <p className="text-blue-900 text-sm">Arcade(Monthly)</p>
-                                                                <p className="text-blue-700 text-xs ">Change</p>
+                                                                <p className="text-blue-900 text-sm">{clickedDiv.label}(Monthly)</p>
+                                                                <p className="text-blue-700 text-xs underline cursor" onClick={handleChange}>Change</p>
                                                             </div>
-                                                            <p className="text-blue-900 text-xs ml-40 mt-2">+$9/mo</p>
+                                                            <p className="text-blue-900 text-xs ml-40 mt-2">+${clickedDiv.priceValue}/mo</p>
                                                         </div>
                                                         <div className="pt-3">
-                                                            <div className="flex">
-                                                            <p className="text-xs text-gray-300">{totalPrice.label}</p>
-                                                            <p className="text-xs text-blue-900 ml-auto">+${totalPrice.price}/mo</p>
+                                                        {selectedItems.map((item, index) => (
+                                                            <div className="flex mb-3" key={index}>
+                                                            <p className="text-xs text-gray-300">{item.label}</p>
+                                                            <p className="text-xs text-blue-900 ml-auto">+${item.price}/mo</p>
+                                                           
                                                             </div>
-                                                            <div className="flex mt-3">
-                                                            <p className="text-xs text-gray-300">Large Storage</p>
-                                                            <p className="text-xs text-blue-900 ml-auto ">+$2/mo</p>
-                                                            </div>
+                                                              ))}
+                                                           
                                                         </div>
                                                     </div>
                                                     <div className="flex mt-4 p-2">
                                                         <p className="text-gray-400 text-sm">Total(per month)</p>
-                                                        <p className="text-blue-900 ml-auto font-bold">+$12/mo</p>
+                                                        <p className="text-blue-900 ml-auto font-bold">+${selectedItems.reduce((acc, item) => acc + item.price, 0) +clickedDiv.priceValue}/mo</p>
                                                     </div>
-                                                    
-                                               
                                                 </div>
                                               
                                                
                                               )}  
                                               {step === 5 && ( 
                                                     <Appreciation />                                            
-                                                
-                                               
                                               )}  
 
 

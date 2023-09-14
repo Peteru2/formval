@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CheckField = ({ total, setTotal}) => {
+const CheckField = ({ setSelectedItems, total, setTotal}) => {
   const [divData, setDivData] = useState([
     {
       isChecked: false,
@@ -28,6 +28,15 @@ const CheckField = ({ total, setTotal}) => {
   const handleDivClick = (index) => {
     const updatedDivData = [...divData];
     updatedDivData[index].isChecked = !updatedDivData[index].isChecked;
+    
+    setSelectedItems(
+      updatedDivData
+        .filter((item) => item.isChecked)
+        .map((item) => ({
+          label: item.label,
+          price: item.originalPrice,
+        }))
+    );
     
 
     updatedDivData[index].price = updatedDivData[index].isChecked
@@ -65,7 +74,14 @@ const CheckField = ({ total, setTotal}) => {
           className={item.isChecked ? 'flex border-2 border-blue-900 p-4 rounded-md mt-8 cursor-pointer bg-blue-50' : 'flex hover:bg-blue-50 border-2 p-4 rounded-md mt-8 cursor-pointer'}
           onClick={() => handleDivClick(index, item.originalPrice)}
         >
-          <input type="checkbox" checked={item.isChecked} className="check outline-none" name="checkbox" onChange={() => {}} />
+          <input 
+          type="checkbox" 
+          checked={item.isChecked} 
+          className="check outline-none" 
+          name="checkbox" 
+          onChange={() => {}} 
+          />
+
           <div className="ml-3">
             <p className="text-blue-900 text-sm">{item.label}</p>
             <p className="text-gray-300 text-xs">{item.description}</p>
