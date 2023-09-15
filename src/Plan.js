@@ -78,7 +78,7 @@ const Plan = ({onPriceClick, subscriptionValue, setSubscriptionValue}) => {
                                                             </div>
                                                             <div className="md:mt-6">
                                                                 <p className="font-bold text-blue-900">Pro </p>
-                                                                <p className="text-xs text-gray-400">$9/mo</p>
+                                                                <p className="text-xs text-gray-400">$29/mo</p>
                                                             </div>
                                                         </div>
 
