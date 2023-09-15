@@ -106,15 +106,15 @@ const LandingPage = () => {
       }
     };
         const handleSubmit = ()=>{
-         if(clickedDiv.label===null || selectedItems === null){
+         if(clickedDiv.label===null || selectedItems.length ===0 ){
             alert("Not all fields has been filled");
          }
          else{
-            if(step === 4){
-            if (step < 5) {
-                setStep(step + 1); // Move to the next step
-            }
-        }
+        //     if(step === 4){
+        //     if (step < 5) {
+        //         setStep(step + 1); // Move to the next step
+        //     }
+        // }
          }
         }
     const DaStyles2 = [
@@ -321,7 +321,7 @@ const LandingPage = () => {
                                                         </div>
                                                     </div>
                                                     <div className="flex mt-4 p-2">
-                                                        <p className="text-gray-400 text-sm">Total(per month)</p>
+                                                        <p className="text-gray-400 text-sm">Total({subscriptionValue === "Yearly"? "per year" : "per month"})</p>
                                                         <p className="text-blue-900 ml-auto font-bold">+${selectedItems.reduce((acc, item) => acc + item.price, 0) +clickedDiv.priceValue}/mo</p>
                                                     </div>
                                                 </div>

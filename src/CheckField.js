@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CheckField = ({ setSelectedItems, total, setTotal, onDivClick, setSelectedDivIndex}) => {
+const CheckField = ({ setSelectedItems, total, setTotal,setSelectedDivIndex}) => {
   const [divData, setDivData] = useState([
     {
       isChecked: false,
