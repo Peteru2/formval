@@ -110,11 +110,11 @@ const LandingPage = () => {
             alert("Not all fields has been filled");
          }
          else{
-        //     if(step === 4){
-        //     if (step < 5) {
-        //         setStep(step + 1); // Move to the next step
-        //     }
-        // }
+            if(step === 4){
+            if (step < 5) {
+                setStep(step + 1); // Move to the next step
+            }
+        }
          }
         }
     const DaStyles2 = [
@@ -164,7 +164,7 @@ const LandingPage = () => {
     const handleChange = () =>{
         setStep(2)
     }
-     console.log(totalPrice.price,totalPrice.title)
+     
     return ( 
             <>
                     <section className=" Landing  align-center bg-white rounded-md">
