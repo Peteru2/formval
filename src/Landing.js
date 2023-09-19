@@ -83,10 +83,16 @@ const LandingPage = () => {
             setErrors(newErrors);
             }
         }
-        if (step < 5) {
+        if (step === 2){
+            if (step < 5) {
             setStep(step + 1); // Move to the next step
+            }
         }
-        
+        if (step === 3){
+            if (step < 5) {
+            setStep(step + 1); // Move to the next step
+            }
+        }    
       
         }
   
