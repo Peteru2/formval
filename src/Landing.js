@@ -83,11 +83,16 @@ const LandingPage = () => {
             setErrors(newErrors);
             }
         }
-        if (step < 5) {
-            setStep(step + 1); // Move to the next step
+        if(step===2){
+            if (step < 5) {
+                setStep(step + 1); // Move to the next step
+            }
         }
-        
-      
+        if(step===3){
+            if (step < 5) {
+                setStep(step + 1); // Move to the next step
+            }
+        }
         }
   
   
@@ -204,8 +209,9 @@ const LandingPage = () => {
 
                                           
                                          < div className="col-span-2 pageBody " >
+                                            <div className={`moveIn ${step === 1 ? 'moveInShow' : ''}`}>
                                             {step === 1 && (
-                                                <div>
+                                                <div >
                                                 <h2 className="text-2xl mt-2 font-bold text-blue-900">Personal Info</h2>
                                                 <p className="text-sm text-gray-300">Please provide name, email address, and phone number</p>
                                             <form>
@@ -252,11 +258,11 @@ const LandingPage = () => {
 
                                                 </div>
                                                  )}
-                                          
+                                          </div>
                                            
-                                            
+                                    <div className={`moveIn ${step === 2 ? 'moveInShow' : ''}`}>
                                   {step === 2 && (    
-                                            <div>
+                                            <div >
 
                                         <Plan 
                                               onPriceClick={handlePriceClick}   
@@ -265,12 +271,12 @@ const LandingPage = () => {
 
                                             </div>   
                                   )}
-                            
+                                </div>
                                                                          
                                          
-
+                                <div className={`moveIn ${step === 3 ? 'moveInShow' : ''}`}>
                                 { step === 3   && (
-                                         <div>                                                  
+                                         <div >                                                  
                                                 <h2 className="text-2xl mt-2 font-bold text-blue-900">Pick add-ons</h2>
                                                 <p className="text-xs text-gray-300">Add-ons helps enhance your gaming experience</p>
 
@@ -287,9 +293,10 @@ const LandingPage = () => {
                                                
                                                
                                             )}
-
+                                        </div>
+                                        <div className={`moveIn ${step === 4 ? 'moveInShow' : ''}`}>
                                                {step === 4 && ( 
-                                         <div>                                                  
+                                         <div >                                                  
                                                 <h2 className="text-2xl mt-2 font-bold text-blue-900">Finishing Up</h2>
                                                 <p className="text-xs text-gray-300">Double-check everything looks OK before confirming</p>
 
@@ -321,22 +328,28 @@ const LandingPage = () => {
                                               
                                                
                                               )}  
-                                              {step === 5 && ( 
-                                                    <Appreciation />                                            
-                                              )}  
 
+                                              </div>
+
+                                              <div className={`moveIn ${step === 5 ? 'moveInShow' : ''}`}>
+                                              {step === 5 && ( 
+                                                <div className={step=== 5 ? "moveIn moveInShow" : "moveIn"}>
+                                                    <Appreciation />           
+                                                    </div>                                 
+                                              )}  
+                                            </div>
 
                                     <div className={step === 5 ? "hidden":"actionButton" }>   
                                             <div className={step === 1 ? "hidden":" text-gray-400  hover:text-blue-900 mt-2 "}>
-                                                        <button onClick={handleBack}>
+                                                        <button onClick={handleBack} className="outline-none">
                                                             Go Back
                                                         </button>
                                                     </div>
                                                     
-                                                        <button onClick={handleNext} className={step === 4?"hidden":"ml-auto rounded-md bg-blue-900 px-4 h-10 py-2 w-32 text-center text-white "}>
+                                                        <button onClick={handleNext} className={step === 4?"hidden":"ml-auto rounded-md bg-blue-900 px-4 h-10 py-2 w-32 text-center text-white outline-none"}>
                                                                 Next Step
                                                         </button>
-                                                        <button onClick={handleSubmit} className={step ===4 ? "ml-auto rounded-md bg-blue-600 px-4 py-2 h-10 w-32 text-center text-white " : "hidden"}>
+                                                        <button onClick={handleSubmit} className={step ===4 ? "ml-auto rounded-md bg-blue-600 px-4 py-2 h-10 w-32 text-center text-white outline-none" : "hidden"}>
                                                                 Submit
                                                         </button>
                                                    
@@ -349,15 +362,15 @@ const LandingPage = () => {
                                                       
                                                   <div className={step ===5 ? "hidden":"actionButton1"} >   
                                             <div className={step === 1 ? "hidden":" text-gray-400  hover:text-blue-900 mt-2"}>
-                                                        <button onClick={handleBack}>
+                                                        <button onClick={handleBack} className="outline-none">
                                                             Go Back
                                                         </button>
                                                     </div>
                                                     
-                                                        <button onClick={handleNext} className={step === 4?"hidden":"ml-auto rounded-md bg-blue-900 px-4 h-10 py-2 w-32 text-center text-white "}>
+                                                        <button onClick={handleNext} className={step === 4?"hidden":"ml-auto rounded-md bg-blue-900 px-4 h-10 py-2 w-32 text-center text-white outline-none"}>
                                                                 Next Step
                                                         </button>
-                                                        <button onClick={handleSubmit} className={step ===4 ? "ml-auto rounded-md bg-blue-600 px-4 py-2 h-10 w-32 text-center text-white " : "hidden"}>
+                                                        <button onClick={handleSubmit} className={step ===4 ? "ml-auto rounded-md bg-blue-600 px-4 py-2 h-10 w-32 outline-none text-center text-white " : "hidden"}>
                                                                 Submit
                                                         </button>
                                                    

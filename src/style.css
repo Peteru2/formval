@@ -21,6 +21,16 @@ body{
     margin-top:40px;
    
 }
+.moveIn{
+    opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 200ms ease, transform 200ms ease;
+
+}
+.moveInShow{
+    opacity: 1;
+    transform: translateX(0%);
+}
 .actionButton{
     display: flex;
 }
