@@ -25,12 +25,14 @@ body{
     opacity: 0;
   transform: translateX(100%);
   transition: opacity 200ms ease, transform 200ms ease;
-
 }
-.moveInShow{
+.moveIn.moveInLeft {
+    transform: translateX(-100%); /* Start off the screen to the left */
+  }
+  .moveIn.moveInShow {
     opacity: 1;
-    transform: translateX(0%);
-}
+    transform: translateX(0%); /* Move to 0% (center) on the X-axis */
+  }
 .actionButton{
     display: flex;
 }

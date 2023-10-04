@@ -260,7 +260,7 @@ const LandingPage = () => {
                                                  )}
                                           </div>
                                            
-                                    <div className={`moveIn ${step === 2 ? 'moveInShow' : ''}`}>
+                                    <div className={`moveIn ${step === 2 ? 'moveInShow' : step === 1 ? 'moveInLeft' : ''}`}>
                                   {step === 2 && (    
                                             <div >
 
@@ -274,7 +274,7 @@ const LandingPage = () => {
                                 </div>
                                                                          
                                          
-                                <div className={`moveIn ${step === 3 ? 'moveInShow' : ''}`}>
+                                <div className={`moveIn ${step === 3 ? 'moveInShow' : step === 2 ? 'moveInLeft' : ''}`}>
                                 { step === 3   && (
                                          <div >                                                  
                                                 <h2 className="text-2xl mt-2 font-bold text-blue-900">Pick add-ons</h2>
@@ -294,7 +294,7 @@ const LandingPage = () => {
                                                
                                             )}
                                         </div>
-                                        <div className={`moveIn ${step === 4 ? 'moveInShow' : ''}`}>
+                                        <div className={`moveIn ${step === 4 ? 'moveInShow' : step === 3 ? 'moveInLeft' : ''}`}>
                                                {step === 4 && ( 
                                          <div >                                                  
                                                 <h2 className="text-2xl mt-2 font-bold text-blue-900">Finishing Up</h2>
