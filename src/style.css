@@ -4,6 +4,7 @@ body{
 .Landing{
     margin: 100px 350px;
     border-radius: 10px;
+    overflow-x: hidden;
     
 }
 .LandingBg{
@@ -25,13 +26,19 @@ body{
     opacity: 0;
   transform: translateX(100%);
   transition: opacity 200ms ease, transform 200ms ease;
+  overflow-x:hidden;
+  box-sizing: border-box;
+
 }
 .moveIn.moveInLeft {
     transform: translateX(-100%); /* Start off the screen to the left */
+    box-sizing: border-box;
+
   }
   .moveIn.moveInShow {
     opacity: 1;
     transform: translateX(0%); /* Move to 0% (center) on the X-axis */
+    box-sizing: border-box;
   }
 .actionButton{
     display: flex;
@@ -88,7 +95,7 @@ body{
         background: white;
         padding:  22px 30px;
         bottom:0%;
-        width: 100%
+        width:100%
         ;
 
         

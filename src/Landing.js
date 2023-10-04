@@ -333,9 +333,9 @@ const LandingPage = () => {
 
                                               <div className={`moveIn ${step === 5 ? 'moveInShow' : ''}`}>
                                               {step === 5 && ( 
-                                                <div className={step=== 5 ? "moveIn moveInShow" : "moveIn"}>
+                                                
                                                     <Appreciation />           
-                                                    </div>                                 
+                                                                                    
                                               )}  
                                             </div>
 
