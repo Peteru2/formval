@@ -9,10 +9,11 @@ body{
 }
 
 .LandingBg{
-    background: url("./images/bg-sidebar-desktop.svg");
+    background-image: url("./images/bg-sidebar-desktop.svg");
     height:550px!important;
     border-radius:10px;
     width: 80%!important;
+    /* margin: 200px */
 }
     
 .pageBody{
@@ -59,11 +60,11 @@ body{
     .Landing{
         margin: 0px 0px;
         overflow-x: hidden;
-
+        border-radius: 0px;
 
     }
     .LandingBg{
-        background-image: url("./images/bg-sidebar-mobile.svg");
+        background-image: url("./images/bg-sidebar-mobile.svg");    
         background-size:cover;
         height: 170px!important;
         border-radius: 0px!important;

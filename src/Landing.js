@@ -165,7 +165,7 @@ const LandingPage = () => {
      
     return ( 
             <>
-                    <section className=" Landing  align-center md:bg-white">
+                    <section className=" Landing  align-center md:bg-white ">
                             <div className="grid md:grid-cols-3 md:p-2 grid-cols-1 ">
                                     <div className="LandingBg col-span-1 p-5 md:block flex md:justify-left justify-center ">
                                         <div className="md:block flex md:ml-0 md:mt-0 mt-2  justify-center ">
