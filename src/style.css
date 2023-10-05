@@ -5,13 +5,14 @@ body{
     margin: 100px 350px;
     border-radius: 10px;
     overflow-x: hidden;
-    
+
 }
+
 .LandingBg{
     background: url("./images/bg-sidebar-desktop.svg");
-    height: 550px!important;
-    border-radius: 10px;
-    width: 80%!important
+    height:550px!important;
+    border-radius:10px;
+    width: 80%!important;
 }
     
 .pageBody{
@@ -23,28 +24,27 @@ body{
    
 }
 .moveIn{
-    opacity: 0;
+  opacity: 0;
   transform: translateX(0%);
   transition: opacity 200ms ease, transform 200ms ease;
   overflow-x:hidden;
-  
-
 }
+
 .moveIn.moveInLeft {
     transform: translateX(-100%); 
-  }
-  .moveIn.moveInShow {
+  }  
+.moveIn.moveInShow {
     opacity: 1;
-    transform: translateX(0%); 
-    
+    transform: translateX(0%);     
   }
+
 .actionButton{
     display: flex;
 }
 .actionButton1{
     display: none;
-
 }
+
 @media only screen  and (max-width: 1300px){
     .Landing{
         margin: 100px 200px;
@@ -60,11 +60,13 @@ body{
         margin: 0px 0px;
         overflow-x: hidden;
 
+
     }
     .LandingBg{
-        background: url("./images/bg-sidebar-mobile.svg");
+        background-image: url("./images/bg-sidebar-mobile.svg");
+        background-size:cover;
         height: 170px!important;
-        border-radius: 0px;
+        border-radius: 0px!important;
         width: 100%!important;
        
     }
