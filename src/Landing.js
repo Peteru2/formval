@@ -216,7 +216,7 @@ const LandingPage = () => {
                                                 <p className="text-sm text-gray-300">Please provide name, email address, and phone number</p>
                                             <form>
                                                 <div className="mb-3 mt-6">  
-                                                <label className="my-1 text-sm label flex"><span>Name</span> <span className="ml-auto text-red-400">{errors.name}</span></label>
+                                                <label className="my-1 text-sm label flex"><span>Name</span> <span className={`ml-auto  text-red-400 ${errors.name? "blink-error":""}`}>{errors.name}</span></label>
                                                     <div className="flex items-center border rounded-md px-3 mt-1 py-2">
                                                     <input type="text" 
                                                            className="w-full outline-none text-blue-900" 
@@ -230,7 +230,7 @@ const LandingPage = () => {
                                                 </div>
 
                                                 <div className="mb-3 mt-6">  
-                                                <label className="my-1 text-sm label flex"><span>Email Address</span> <span className="ml-auto text-red-400">{errors.email}</span></label>
+                                                <label className="my-1 text-sm label flex"><span>Email Address</span> <span className={`ml-auto  text-red-400 ${errors.email? "blink-error":""}`}>{errors.email}</span></label>
                                                     <div className="flex items-center border rounded-md px-3 mt-1 py-2">
                                                     <input type="Email" 
                                                            className="w-full outline-none text-blue-900 text-block" 
@@ -243,7 +243,7 @@ const LandingPage = () => {
                                                 </div>
 
                                                 <div className="mb-3 mt-6">  
-                                                <label className="my-1 text-sm label flex"><span>Phone Number</span> <span className="ml-auto text-red-400">{errors.phoneNumber}</span></label>
+                                                <label className="my-1 text-sm label flex"><span>Phone Number</span> <span className={`ml-auto  text-red-400 ${errors.phoneNumber? "blink-error":""}`}>{errors.phoneNumber}</span></label>
                                                     <div className="flex items-center border rounded-md px-3 mt-1 py-2">
                                                     <input type="text" 
                                                            className="w-full outline-none text-blue-900" 

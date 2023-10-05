@@ -45,6 +45,18 @@ body{
 .actionButton1{
     display: none;
 }
+.blink-error {
+    animation: blink .2s 3;
+  }
+  
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
 
 @media only screen  and (max-width: 1300px){
     .Landing{
