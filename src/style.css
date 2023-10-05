@@ -24,24 +24,24 @@ body{
 }
 .moveIn{
     opacity: 0;
-  transform: translateX(100%);
+  transform: translateX(0%);
   transition: opacity 200ms ease, transform 200ms ease;
   overflow-x:hidden;
   box-sizing: border-box;
 
 }
 .moveIn.moveInLeft {
-    transform: translateX(-100%); /* Start off the screen to the left */
+    transform: translateX(-100%); 
     box-sizing: border-box;
 
   }
   .moveIn.moveInShow {
     opacity: 1;
-    transform: translateX(0%); /* Move to 0% (center) on the X-axis */
+    transform: translateX(0%); 
     box-sizing: border-box;
   }
 .actionButton{
-    display: flex;
+    /* display: flex; */
 }
 .actionButton1{
     display: none;
@@ -60,6 +60,8 @@ body{
 @media only screen  and (max-width: 768px){
     .Landing{
         margin: 0px 0px;
+        overflow-x: hidden;
+
     }
     .LandingBg{
         background: url("./images/bg-sidebar-mobile.svg");
@@ -85,9 +87,7 @@ body{
         box-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.15);
        
     }
-    /* .active{
-        position: relative;
-    } */
+    
     .actionButton1{
         position:fixed;
        display: flex;

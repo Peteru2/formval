@@ -360,14 +360,18 @@ const LandingPage = () => {
                                                   </div>
                                   
                                                       
-                                                  <div className={step ===5 ? "hidden":"actionButton1"} >   
-                                            <div className={step === 1 ? "hidden":" text-gray-400  hover:text-blue-900 mt-2"}>
+                                                  <div className={step ===5 ? "hidden":"actionButton1"}>
+
+                                                    <div className={step === 1 ? "hidden":" text-gray-400  hover:text-blue-900 mt-2"}>
+
                                                         <button onClick={handleBack} className="outline-none">
                                                             Go Back
                                                         </button>
+
                                                     </div>
                                                     
                                                         <button onClick={handleNext} className={step === 4?"hidden":"ml-auto rounded-md bg-blue-900 px-4 h-10 py-2 w-32 text-center text-white outline-none"}>
+                                                            
                                                                 Next Step
                                                         </button>
                                                         <button onClick={handleSubmit} className={step ===4 ? "ml-auto rounded-md bg-blue-600 px-4 py-2 h-10 w-32 outline-none text-center text-white " : "hidden"}>
