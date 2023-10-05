@@ -302,6 +302,8 @@ const LandingPage = () => {
 
                                                
                                                     <div className="bg-blue-50 rounded-md p-4 mt-8">
+                                                    <h3 className="font-bold mb-4 text-gray-500">{formData.name}</h3>
+
                                                         <div className="flex pb-4 border-b-2">
                                                             <div>
                                                                 <p className="text-blue-900 text-sm">{clickedDiv.label}({subscriptionValue})</p>
@@ -331,7 +333,7 @@ const LandingPage = () => {
 
                                               </div>
 
-                                              <div className={`moveIn ${step === 5 ? 'moveInShow' : ''}`}>
+                                              <div className={`moveIn ${step === 5 ? 'moveInShow' :  ''}`}>
                                               {step === 5 && ( 
                                                 
                                                     <Appreciation />           
@@ -371,7 +373,7 @@ const LandingPage = () => {
                                                     </div>
                                                     
                                                         <button onClick={handleNext} className={step === 4?"hidden":"ml-auto rounded-md bg-blue-900 px-4 h-10 py-2 w-32 text-center text-white outline-none"}>
-                                                            
+
                                                                 Next Step
                                                         </button>
                                                         <button onClick={handleSubmit} className={step ===4 ? "ml-auto rounded-md bg-blue-600 px-4 py-2 h-10 w-32 outline-none text-center text-white " : "hidden"}>

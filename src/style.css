@@ -27,21 +27,19 @@ body{
   transform: translateX(0%);
   transition: opacity 200ms ease, transform 200ms ease;
   overflow-x:hidden;
-  box-sizing: border-box;
+  
 
 }
 .moveIn.moveInLeft {
-    transform: translateX(-100%); 
-    box-sizing: border-box;
-
+    transform: translateX(100%); 
   }
   .moveIn.moveInShow {
     opacity: 1;
     transform: translateX(0%); 
-    box-sizing: border-box;
+    
   }
 .actionButton{
-    /* display: flex; */
+    display: flex;
 }
 .actionButton1{
     display: none;
